@@ -72,12 +72,35 @@ void Contacts::AddContact()
 	AddDarkSecret();
 }
 
-void Contacts::PrintContact()
+void Contacts::PrintContact(int index)
 {
-	cout << "-----------------The Contact------------\n";
-	cout << this->firstName + "\n";
-	cout << this->lastName + "\n";
-	cout << this->nickName + "\n";
-	cout << this->darkSecret + "\n";
-	cout << this->phoneNumber+ "\n";
+	cout << index + 1;
+	cout << "     ";
+	cout << "|";
+	cout << this->firstName.substr(0, 9);
+	if (this->firstName.length() > 10)
+		cout << ".";
+	else
+	{
+		for (size_t i = this->firstName.length(); i < 11; i++)
+			cout << " ";
+	}
+	cout << "|";
+	cout <<  this->lastName.substr(0, 9);
+	if (this->lastName.length() > 10)
+		cout << ".";
+	else
+	{
+		for (size_t i = this->lastName.length(); i < 10; i++)
+			cout << " ";
+	}
+	cout << "|";
+	cout <<  this->nickName.substr(0, 9);
+	if (this->nickName.length() > 10)
+		cout << ".";
+	else
+	{
+		for (size_t i = this->nickName.length(); i < 11; i++)
+			cout << " ";
+	}
 }

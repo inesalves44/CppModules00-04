@@ -6,7 +6,7 @@
 /*   By: idias-al <idias-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 16:22:33 by idias-al          #+#    #+#             */
-/*   Updated: 2023/08/03 19:36:31 by idias-al         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:36:14 by idias-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	main() 
 {
-	Contacts	contact;
+	PhoneBooks phoneBook;
 
-	contact.AddContact();
+	phoneBook.PhoneBookMenu();
 
-	contact.PrintContact();
+	return (0);
 }

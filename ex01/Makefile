@@ -6,12 +6,12 @@
 #    By: idias-al <idias-al@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/03 15:57:56 by idias-al          #+#    #+#              #
-#    Updated: 2023/08/03 18:32:08 by idias-al         ###   ########.fr        #
+#    Updated: 2023/08/04 10:36:43 by idias-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-OBJS  =  AwesomePhoneBook.o Contacts.o 
+OBJS  =  AwesomePhoneBook.o Contacts.o PhoneBook.o
 NAME = awesomePhoneBook
 CC = c++
 CFLAGS = -Wextra -Werror -Wall -std=c++98

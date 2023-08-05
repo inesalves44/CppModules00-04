@@ -24,7 +24,7 @@ class Contacts
 
     public:
         void AddContact();
-        void PrintContact();
+        void PrintContact(int index);
 };
 
 #endif

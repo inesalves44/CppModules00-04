@@ -3,17 +3,20 @@
 
 #pragma once
 #include "Contacts.h"
-#include<array>
 using namespace std;
 
 class PhoneBooks
 {
     private:
-        array<Contacts, 8> phoneBook;
+        Contacts phoneBook[8];
+        int phoneBookLength = 0;
+        void AddContact();
+        void SearchContact();
+        void DeleteContact();
+        void PrintTemplate();
 
     public:
-        void AddContact(Contacts contact);
-        int  GetPhoneBookLength();
+        void PhoneBookMenu();
 };
 
 #endif
