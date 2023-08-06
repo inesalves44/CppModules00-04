@@ -2,17 +2,16 @@
 
 void PhoneBooks::DeleteContact()
 {
-	for (size_t i = 0; i < this->phoneBookLength; i++)
+	for (size_t i = 0; i < this->phoneBookLength - 1; i++)
 		this->phoneBook[i] = this->phoneBook[i + 1];
 }
 
 void PhoneBooks::AddContact()
 {
-
 	if (this->phoneBookLength == 8)
 		DeleteContact();
 
-	if (this->phoneBookLength <= 8)
+	if (this->phoneBookLength < 8)
 		this->phoneBookLength++;
 	this->phoneBook[this->phoneBookLength - 1].AddContact();
 	cout << "Contact added!\n";
@@ -24,7 +23,6 @@ void PhoneBooks::PrintTemplate()
 	cout << "First Name |";
 	cout << "Last Name |";
 	cout << "NickName\n";
-	cout << "\n";
 }
 
 void PhoneBooks::SearchContact()
@@ -39,11 +37,21 @@ void PhoneBooks::SearchContact()
 		phoneBook[i].PrintContact(i);
 		cout << "\n";
 	}
-	cout << "\n";
-	cout << "What is the Contact you are looking for: ";
-	cin >> index;
 
-	input = int(index - '0') - 1;
+	do
+	{
+		cout << "\n";
+		cout << "What is the Contact you are looking for: ";
+		cin >> index;
+
+		input = int(index - '0') - 1;
+
+		if (input < 0 || input >= this->phoneBookLength)
+			cout << "Not a valid Contact\n";
+
+	} while (input < 0 || input >= this->phoneBookLength);
+	
+	
 	this->PrintTemplate();
 	phoneBook[input].PrintContact(input);
 	cout << "\n";
