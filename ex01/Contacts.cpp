@@ -5,7 +5,7 @@ void Contacts::AddFirstName()
 {
 	do
 	{
-		cout << "First Name: ";
+		cout << "\033[0;33mFirst Name: \033[0;37m";
 		cin >> this->firstName;
 	} while (this->firstName == "");
 }
@@ -14,7 +14,7 @@ void Contacts::AddLastName()
 {
 	do
 	{
-		cout << "Last Name: ";
+		cout << "\033[0;33mLast Name: \033[0;37m";
 		cin >> this->lastName;
 	} while (this->lastName == "");
 }
@@ -23,7 +23,7 @@ void Contacts::AddNickName()
 {
 	do
 	{
-		cout << "NickName: ";
+		cout << "\033[0;33mNickName: \033[0;37m";
 		cin >> this->nickName;
 	} while (this->nickName == "");
 }
@@ -32,7 +32,7 @@ void Contacts::AddDarkSecret()
 {
 	do
 	{
-		cout << "Dark Secret: ";
+		cout << "\033[0;33mDark Secret: \033[0;37m";
 		cin >> this->darkSecret;
 	} while (this->darkSecret == "");
 }
@@ -41,12 +41,12 @@ void Contacts::AddPhoneNumber()
 {
 	do
 	{
-		cout << "Phone Number: ";
+		cout << "\033[0;33mPhone Number: \033[0;37m";
 		cin >> this->phoneNumber;
 		
 		if (this->phoneNumber.length() > 15 || this->phoneNumber.length() < 7)
 		{
-			cout << "Phone Number isn't the correct length";
+			cout << "\033[0;31mPhone Number isn't the correct length\033[0;37m\n\n";
 			this->phoneNumber = "";
 			continue;
 		}
@@ -55,7 +55,7 @@ void Contacts::AddPhoneNumber()
 		{
 			if (this->phoneNumber[i] < '0' || this->phoneNumber[i] > '9')
 			{
-				cout << "Phone Number is only digits";
+				cout << "\033[0;31mPhone Number is only digits\033[0;37m\n\n";
 				this->phoneNumber = "";
 				break ;
 			}
@@ -72,35 +72,45 @@ void Contacts::AddContact()
 	AddDarkSecret();
 }
 
+void Contacts::PrintElement(std::string element)
+{
+	cout << element.substr(0, 9);
+	if (element.length() > 10)
+		cout << ".";
+	else
+	{
+		cout << " ";
+		for (size_t i = element.length() + 1; i < 10; i++)
+			cout << " ";
+	}
+}
+
 void Contacts::PrintContact(int index)
 {
 	cout << index + 1;
 	cout << "     ";
 	cout << "|";
-	cout << this->firstName.substr(0, 9);
-	if (this->firstName.length() > 10)
-		cout << ".";
-	else
-	{
-		for (size_t i = this->firstName.length(); i < 11; i++)
-			cout << " ";
-	}
+	PrintElement(this->firstName);
 	cout << "|";
-	cout <<  this->lastName.substr(0, 9);
-	if (this->lastName.length() > 10)
-		cout << ".";
-	else
-	{
-		for (size_t i = this->lastName.length(); i < 10; i++)
-			cout << " ";
-	}
+	PrintElement(this->lastName);
 	cout << "|";
-	cout <<  this->nickName.substr(0, 9);
-	if (this->nickName.length() > 10)
-		cout << ".";
-	else
-	{
-		for (size_t i = this->nickName.length(); i < 11; i++)
-			cout << " ";
-	}
+	PrintElement(this->nickName);
+}
+
+void Contacts::DisplayContact()
+{
+	cout << "\033[1;32mFirst Name: \033[0;37m";
+	cout << this->firstName;
+	cout << "\n";
+	cout << "\033[1;32mLast Name: \033[0;37m";
+	cout << this->lastName;
+	cout << "\n";
+	cout << "\033[1;32mNickname: \033[0;37m";
+	cout << this->nickName;
+	cout << "\n";
+	cout << "\033[1;32mPhone Number: \033[0;37m";
+	cout << this->phoneNumber;
+	cout << "\n";
+	cout << "\033[1;32mDark Secret: \033[0;37m";
+	cout << this->darkSecret;
 }

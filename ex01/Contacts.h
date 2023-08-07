@@ -21,10 +21,12 @@ class Contacts
         void AddPhoneNumber();
         void AddNickName();
         void AddDarkSecret();
+		void PrintElement(std::string element);
 
     public:
         void AddContact();
         void PrintContact(int index);
+		void DisplayContact();
 };
 
 #endif
