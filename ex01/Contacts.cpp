@@ -1,78 +1,92 @@
 #include "Contacts.h"
 using namespace std;
 
-void Contacts::AddFirstName()
+/**
+ * @brief This reagion is where all the contacts parametrs are added.
+ */
+#pragma region addparametrs
+void Contacts::_addFirstName()
 {
 	do
 	{
 		cout << "\033[0;33mFirst Name: \033[0;37m";
-		cin >> this->firstName;
-	} while (this->firstName == "");
+		cin >> this->_firstName;
+	} while (this->_firstName == "");
 }
 
-void Contacts::AddLastName()
+void Contacts::_addLastName()
 {
 	do
 	{
 		cout << "\033[0;33mLast Name: \033[0;37m";
-		cin >> this->lastName;
-	} while (this->lastName == "");
+		cin >> this->_lastName;
+	} while (this->_lastName == "");
 }
 
-void Contacts::AddNickName()
+void Contacts::_addNickName()
 {
 	do
 	{
 		cout << "\033[0;33mNickName: \033[0;37m";
-		cin >> this->nickName;
-	} while (this->nickName == "");
+		cin >> this->_nickName;
+	} while (this->_nickName == "");
 }
 
-void Contacts::AddDarkSecret()
+void Contacts::_addDarkSecret()
 {
 	do
 	{
 		cout << "\033[0;33mDark Secret: \033[0;37m";
-		cin >> this->darkSecret;
-	} while (this->darkSecret == "");
+		cin >> this->_darkSecret;
+	} while (this->_darkSecret == "");
 }
 
-void Contacts::AddPhoneNumber()
+void Contacts::_addPhoneNumber()
 {
 	do
 	{
 		cout << "\033[0;33mPhone Number: \033[0;37m";
-		cin >> this->phoneNumber;
+		cin >> this->_phoneNumber;
 		
-		if (this->phoneNumber.length() > 15 || this->phoneNumber.length() < 7)
+		if (this->_phoneNumber.length() > 15 || this->_phoneNumber.length() < 7)
 		{
 			cout << "\033[0;31mPhone Number isn't the correct length\033[0;37m\n\n";
-			this->phoneNumber = "";
+			this->_phoneNumber = "";
 			continue;
 		}
 
-		for (size_t i = 0; i < this->phoneNumber.length(); i++)
+		for (size_t i = 0; i < this->_phoneNumber.length(); i++)
 		{
-			if (this->phoneNumber[i] < '0' || this->phoneNumber[i] > '9')
+			if (this->_phoneNumber[i] < '0' || this->_phoneNumber[i] > '9')
 			{
 				cout << "\033[0;31mPhone Number is only digits\033[0;37m\n\n";
-				this->phoneNumber = "";
+				this->_phoneNumber = "";
 				break ;
 			}
 		}
-	} while (this->phoneNumber == "");
+	} while (this->_phoneNumber == "");
 }
 
-void Contacts::AddContact()
+#pragma endregion
+
+/**
+ * @brief This function is called to create a new contact and give it it's parametrs.
+ */
+void Contacts::addContact()
 {
-	AddFirstName();
-	AddLastName();
-	AddPhoneNumber();
-	AddNickName();
-	AddDarkSecret();
+	_addFirstName();
+	_addLastName();
+	_addPhoneNumber();
+	_addNickName();
+	_addDarkSecret();
 }
 
-void Contacts::PrintElement(std::string element)
+/**
+ * @brief These two functions print the contacts in a single line, int the way
+ * specified int the subject
+ */
+#pragma region printingAllContacts
+void Contacts::_printElement(std::string element)
 {
 	cout << element.substr(0, 9);
 	if (element.length() > 10)
@@ -85,32 +99,37 @@ void Contacts::PrintElement(std::string element)
 	}
 }
 
-void Contacts::PrintContact(int index)
+void Contacts::printContact(int index)
 {
 	cout << index + 1;
 	cout << "     ";
 	cout << "|";
-	PrintElement(this->firstName);
+	_printElement(this->_firstName);
 	cout << "|";
-	PrintElement(this->lastName);
+	_printElement(this->_lastName);
 	cout << "|";
-	PrintElement(this->nickName);
+	_printElement(this->_nickName);
 }
 
-void Contacts::DisplayContact()
+#pragma endregion
+
+/**
+ * @brief Displays all the parameter's of the contact
+ */
+void Contacts::displayContact()
 {
 	cout << "\033[1;32mFirst Name: \033[0;37m";
-	cout << this->firstName;
+	cout << this->_firstName;
 	cout << "\n";
 	cout << "\033[1;32mLast Name: \033[0;37m";
-	cout << this->lastName;
+	cout << this->_lastName;
 	cout << "\n";
 	cout << "\033[1;32mNickname: \033[0;37m";
-	cout << this->nickName;
+	cout << this->_nickName;
 	cout << "\n";
 	cout << "\033[1;32mPhone Number: \033[0;37m";
-	cout << this->phoneNumber;
+	cout << this->_phoneNumber;
 	cout << "\n";
 	cout << "\033[1;32mDark Secret: \033[0;37m";
-	cout << this->darkSecret;
+	cout << this->_darkSecret;
 }

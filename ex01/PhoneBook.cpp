@@ -1,43 +1,66 @@
 #include "PhoneBook.h"
 
-void PhoneBooks::DeleteContact()
+/**
+ * @brief Deletes a contact in case the phoneBook is full.
+ * The contact is deleted by coping the array one place to the left.
+ */
+void PhoneBooks::_deleteContact()
 {
-	for (size_t i = 0; i < this->phoneBookLength - 1; i++)
-		this->phoneBook[i] = this->phoneBook[i + 1];
+	for (size_t i = 0; i < this->_phoneBookLength - 1; i++)
+		this->_phoneBook[i] = this->_phoneBook[i + 1];
 }
 
-void PhoneBooks::AddContact()
+/**
+ * @brief Checks if the phonebook has 8 contacts. If so it deletes the first one.
+ * Then it adds a contact.
+ */
+void PhoneBooks::_addContact()
 {
-	if (this->phoneBookLength == 8)
-		DeleteContact();
+	if (this->_phoneBookLength == 8)
+		_deleteContact();
 
-	if (this->phoneBookLength < 8)
-		this->phoneBookLength++;
-	this->phoneBook[this->phoneBookLength - 1].AddContact();
+	if (this->_phoneBookLength < 8)
+		this->_phoneBookLength++;
+	this->_phoneBook[this->_phoneBookLength - 1].addContact();
 	cout << "\n\033[1;32m\033[1;1mContact added!\n\n";
 }
 
-void PhoneBooks::PrintTemplate()
+/**
+ * @brief Prints all the contacts.
+ */
+void PhoneBooks::_printContacts()
 {
 	cout << "\033[1;37mIndex |";
 	cout << "First Name|";
 	cout << "Last Name |";
 	cout << "NickName\n";
+
+	for (size_t i = 0; i < _phoneBookLength; i++)
+	{
+		cout << "\033[0;37m";
+		_phoneBook[i].printContact(i);
+		cout << "\n";
+	}
 }
 
-void PhoneBooks::SearchContact()
+/**
+ * @brief Shows the contacts then asks which you want.
+ * if it exists it returns the contact, else it gives you an error.
+ */
+bool PhoneBooks::_searchContact()
 {
 	int input;
 	char index;
 
-	cout << "\033[1;34m-------------------Here are Your Contacts--------------------------------------------\n\n";
-	this->PrintTemplate();
-	for (size_t i = 0; i < phoneBookLength; i++)
+	if (_phoneBookLength == 0)
 	{
-		cout << "\033[0;37m";
-		phoneBook[i].PrintContact(i);
-		cout << "\n";
+		cout << "\033[0;31mNo contacts to search\033[0;37m\n";
+		return false;
 	}
+
+	cout << "\033[1;34m-------------------Here are Your Contacts--------------------------------------------\n\n";
+	
+	_printContacts();
 
 	do
 	{
@@ -48,17 +71,21 @@ void PhoneBooks::SearchContact()
 
 		input = int(index - '0') - 1;
 
-		if (input < 0 || input >= this->phoneBookLength)
+		if (input < 0 || input >= this->_phoneBookLength)
 			cout << "\033[0;31mNot a valid Contact\033[0;37m\n";
 
-	} while (input < 0 || input >= this->phoneBookLength);
+	} while (input < 0 || input >= this->_phoneBookLength);
 	
 
-	phoneBook[input].DisplayContact();
+	_phoneBook[input].displayContact();
 	cout << "\033[0;37m\n\n";
+	return true;
 }
 
-void PhoneBooks::PhoneBookMenu()
+/**
+ * @brief The PhoneBook Menu
+ */
+void PhoneBooks::_phoneBookMenu()
 {
 	std::string answer;
 	
@@ -77,9 +104,9 @@ void PhoneBooks::PhoneBookMenu()
 			towlower(answer[i]);
 		
 		if (answer == "1" || answer == "add")
-			AddContact();
+			_addContact();
 		else if (answer == "2" || answer == "search")
-			SearchContact();
+			_searchContact();
 		else if (answer == "3" || answer == "exit")
 		{
 			cout << "\033[1;35mThank you so much for using our PhoneBook!\033[1;37m\n";
@@ -90,4 +117,12 @@ void PhoneBooks::PhoneBookMenu()
 
 	} while (answer != "3" && answer != "exit");
 	
+}
+
+/**
+ * @brief Construct a new Phone Books:: Phone Books object
+ */
+PhoneBooks::PhoneBooks()
+{
+	_phoneBookMenu();
 }

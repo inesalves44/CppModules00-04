@@ -1,24 +1,15 @@
 #include <iostream>
 #include <cstring>
 
-void	upperCase(char *str)
-{
-	for (size_t i = 0; i < strlen(str); i++)
-		putchar(toupper(str[i]));
-}
-
 int	main(int argc, char *argv[])
 {
-	int i = 1;
-
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 
-	while (i < argc)
-	{
-		upperCase(argv[i]); 
-		i++;
-	}
-
+	for (size_t i = 1; i < argc; i++)
+		for (size_t j = 0; j < strlen(argv[i]); j++)
+			std::cout << (char)toupper(argv[i][j]);
+	
+	std::cout << std::endl;
 	return 0;
 }

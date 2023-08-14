@@ -8,15 +8,16 @@ using namespace std;
 class PhoneBooks
 {
     private:
-        Contacts phoneBook[8];
-        int phoneBookLength = 0;
-        void AddContact();
-        void SearchContact();
-        void DeleteContact();
-        void PrintTemplate();
+        Contacts _phoneBook[8];
+        int _phoneBookLength = 0;
+        void _addContact();
+        bool _searchContact();
+        void _deleteContact();
+        void _printContacts();
+        void _phoneBookMenu();
 
     public:
-        void PhoneBookMenu();
+        PhoneBooks();
 };
 
 #endif
