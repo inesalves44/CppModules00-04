@@ -50,7 +50,7 @@ void PhoneBooks::_printContacts()
 bool PhoneBooks::_searchContact()
 {
 	int input;
-	char index;
+	string index;
 
 	if (_phoneBookLength == 0)
 	{
@@ -69,7 +69,7 @@ bool PhoneBooks::_searchContact()
 		cin >> index;
 		cout << "\n";
 
-		input = int(index - '0') - 1;
+		input = stoi(index) - 1;
 
 		if (input < 0 || input >= this->_phoneBookLength)
 			cout << "\033[0;31mNot a valid Contact\033[0;37m\n";
@@ -83,7 +83,7 @@ bool PhoneBooks::_searchContact()
 }
 
 /**
- * @brief The PhoneBook Menu
+ * @brief The PhoneBook Menu promps the user to choose an option.
  */
 void PhoneBooks::_phoneBookMenu()
 {
