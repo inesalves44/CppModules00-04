@@ -12,6 +12,13 @@
 
 #include "Zombie.h"
 
+/**
+ * @brief CReates N zombies as an array of objects.
+ * It calls the NameZombie for each of the zombies.
+ * @param N -> number of zombies
+ * @param name -> name for all the zombies
+ * @return Zombie* -> the pointer for the first object of the array
+ */
 Zombie* zombieHorde( int N, std::string name )
 {
 	Zombie* horde = new Zombie[N];

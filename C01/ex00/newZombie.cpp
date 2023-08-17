@@ -12,6 +12,11 @@
 
 #include "Zombie.h"
 
+/**
+ * @brief allocs memory for a new zombie calling the constructor. With the new keyword
+ * @name the name of the zombie
+ * @returns the new created zombie
+*/
 Zombie* newZombie( std::string name )
 {
 	Zombie *newZombie = new Zombie(name);
