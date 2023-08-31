@@ -12,6 +12,10 @@
 
 #include "Zombie.h"
 
+/**
+ * @brief creates the zombie horde calling the zombie horde function.
+ * Also announces the zombies. In the end they are deleted.
+ */
 int	main()
 {
 	Zombie* zombieeees;

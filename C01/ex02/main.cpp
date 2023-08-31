@@ -6,25 +6,31 @@
 /*   By: idias-al <idias-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:42:14 by idias-al          #+#    #+#             */
-/*   Updated: 2023/08/16 17:26:42 by idias-al         ###   ########.fr       */
+/*   Updated: 2023/08/16 19:50:58 by idias-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#include <string>
+#include <iostream>
+#include <cstring>
 
 /**
- * @brief main function calls the newZombie function and the random chump.
- * Also deletes the zombie dinamically allocated.
- * @return int -> 0
+ * @brief creates the zombie horde calling the zombie horde function.
+ * Also announces the zombies. In the end they are deleted.
  */
-
 int	main()
 {
-	Zombie *zombieClass = newZombie("Emanuel");
-	
-	randomChump("Toy");
-	
-	zombieClass->Announce();
-	delete zombieClass;
-	return 0;
+	std::string test = "HI THIS IS BRAIN";
+
+	std::string *stringPTR = &test;
+
+	std::string &stringREF = test;
+
+	std::cout << stringPTR << "\n";
+	std::cout << &test << "\n";
+	std::cout << &stringREF << "\n\n";
+
+	std::cout << *stringPTR << "\n";
+	std::cout << test << "\n";
+	std::cout << stringREF << "\n";
 }
