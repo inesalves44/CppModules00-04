@@ -18,7 +18,7 @@ class HumanB
 
     private:
         std::string name;
-        Weapon &weapon;
+        Weapon *weapon;
 
 };
 

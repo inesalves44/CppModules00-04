@@ -1,18 +1,18 @@
 #include "HumanB.h"
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string name) : name(name), weapon(NULL)
 {
-    this->name = name;
+    ;
 }
 
 void HumanB::setWeapon(Weapon &newWeapon)
 {
-    weapon = newWeapon;
+    *weapon = newWeapon;
 }
 
 void HumanB::attack()
 {
-    std::cout << name << " attacks with their " << weapon.getType() << "\n";
+    std::cout << name << " attacks with their " << weapon->getType() << "\n";
 }
 
 
