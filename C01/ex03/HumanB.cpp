@@ -7,7 +7,7 @@ HumanB::HumanB(std::string name) : name(name), weapon(NULL)
 
 void HumanB::setWeapon(Weapon &newWeapon)
 {
-    *weapon = newWeapon;
+    weapon = &newWeapon;
 }
 
 void HumanB::attack()
