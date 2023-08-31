@@ -72,7 +72,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 	{
 		std::cout << "index:" << this->_accountIndex 
 		<< ";p_amount:" << checkAmount()
-		<<"withdrawals:refuse\n";	
+		<<";withdrawals:refuse\n";	
 		return false;
 	}
 	std::cout << "index:" << this->_accountIndex 
