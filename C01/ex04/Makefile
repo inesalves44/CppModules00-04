@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 
-OBJS  =  main.o HumanA.o Weapon.o HumanB.o
-NAME = weapon
+OBJS  =  main.o 
+NAME = string
 CC = c++
 CFLAGS = -Wextra -Werror -Wall -std=c++98
 GREEN           :=      \033[0;32m
@@ -25,7 +25,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
-		@echo "$(GREEN) [Success] ex03 compilation.$(WHITE)"
+		@echo "$(GREEN) [Success] ex04 compilation.$(WHITE)"
 
 clean:
 		@rm -rf $(OBJS)
