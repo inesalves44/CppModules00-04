@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 
-OBJS  =  main.o 
+OBJS  =  main.o Replace.o
 NAME = string
 CC = c++
 CFLAGS = -Wextra -Werror -Wall -std=c++98

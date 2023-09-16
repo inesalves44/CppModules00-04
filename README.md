@@ -1,4 +1,6 @@
-# c00
+# c01
+
+check valgrind na escola
 
 
-CHECK THE PHONEBOOK SEARCH DOENS'T LOOK RIGHT
+
