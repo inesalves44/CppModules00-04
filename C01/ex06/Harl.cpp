@@ -5,6 +5,8 @@ Harl::Harl()
 
 }
 
+#pragma region HarlComplaints 
+
 void Harl::debug(void)
 {
     std::cout << "[DEBUG]\n";
@@ -33,6 +35,13 @@ void Harl::error(void)
     std::cout << "\n\n";
 }
 
+#pragma endregion
+
+/**
+ * @brief this function filters the Harl complaints with a switch
+ * 
+ * @param statement 
+ */
 void    Harl::filter(std::string statement)
 {
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};

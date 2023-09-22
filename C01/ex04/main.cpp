@@ -19,4 +19,5 @@ int main(int argc, char *argv[])
     Replace newClass = Replace(str, s1, s2, s3);
     newClass.ReplaceString();
     infile.close();
+
 }

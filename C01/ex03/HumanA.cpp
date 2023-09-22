@@ -2,9 +2,9 @@
 
 /**
  * @brief Construct a new Human A:: Human A object
- * 
- * @param name - name oz the zombie
- * @param newWeapon - weapon of the zombie
+ * using an initializer list because you need for the reference weapon
+ * @param name -> name of the human
+ * @param newWeapon -> type of the weapon
  */
 HumanA::HumanA(std::string name, Weapon &newWeapon) : name(name), weapon(newWeapon)
 {
@@ -12,7 +12,7 @@ HumanA::HumanA(std::string name, Weapon &newWeapon) : name(name), weapon(newWeap
 }
 
 /**
- * @brief zombie attack
+ * @brief attacks for Human A
  */
 void HumanA::attack()
 {

@@ -5,6 +5,10 @@ Harl::Harl()
 
 }
 
+/**
+ * @brief This regins contain all the strings methods
+ */
+#pragma region HarlMessages
 void Harl::debug(void)
 {
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!";
@@ -24,7 +28,15 @@ void Harl::error(void)
 {
     std::cout << "This is unacceptable! I want to speak to the manager now.";
 }
+#pragma endregion
 
+/**
+ * @brief -> chooses which complain Harl has.
+ * creates an array of strings as levels.
+ *  Then creates a pointer to a member function. And Then this is composed of all the pointers.
+ * Thens checks which pointer to use.
+ * @param level -> string that is a methods
+ */
 void Harl::complain(std::string level)
 {
     std::string levels[4] = {"debug", "info", "warning", "error"};
