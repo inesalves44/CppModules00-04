@@ -1,6 +1,7 @@
 # c01
 
-check valgrind na escola
+verificar ex03 
+verificar ex04
 
 
 

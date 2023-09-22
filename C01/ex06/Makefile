@@ -11,10 +11,10 @@
 # **************************************************************************** #
 
 
-OBJS  =  main.o Zombie.o zombieHorde.o
-NAME = zombieHorde
+OBJS  =  main.o Harl.o
+NAME = harlFilter
 CC = c++
-CFLAGS = -g -Wextra -Werror -Wall -std=c++98
+CFLAGS = -Wextra -Werror -Wall -std=c++98
 GREEN           :=      \033[0;32m
 RED             :=      \033[1;31m
 WHITE           :=      \033[1;37m
@@ -25,14 +25,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
-		@echo "$(GREEN) [Success] ex01 compilation.$(WHITE)"
+		@echo "$(GREEN) [Success] ex05 compilation.$(WHITE)"
 
 clean:
 		@rm -rf $(OBJS)
-		@echo "$(CYAN) [cleaned] ex01 objects."
+		@echo "$(CYAN) [cleaned] ex05 objects."
 
 fclean: clean
 		@rm -rf $(NAME)
-		@echo "$(CYAN) [cleaned] ex01 executable.$(WHITE)"
+		@echo "$(CYAN) [cleaned] ex05 executable.$(WHITE)"
 
 re: fclean all
