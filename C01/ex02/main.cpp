@@ -26,11 +26,11 @@ int	main()
 
 	std::string &stringREF = test;
 
-	std::cout << stringPTR << "\n";
 	std::cout << &test << "\n";
+	std::cout << stringPTR << "\n";
 	std::cout << &stringREF << "\n\n";
 
-	std::cout << *stringPTR << "\n";
 	std::cout << test << "\n";
+	std::cout << *stringPTR << "\n";
 	std::cout << stringREF << "\n";
 }
