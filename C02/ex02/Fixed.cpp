@@ -6,26 +6,22 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 	this->fixedPoint = 0;
 }
 
 Fixed::Fixed( const Fixed & src )
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 }
 
 Fixed::Fixed(const float number)
 {
-	std::cout << "Copy float constructor called" << std::endl;
 	this->fixedPoint = number * (1 << this->fracBits);
 }
 
 Fixed::Fixed(const int number)
 {
-	std::cout << "Copy int constructor called" << std::endl;
-	this->fixedPoint = number * (1 << this->fracBits);
+	this->fixedPoint = number << this->fracBits;
 }
 
 /*
@@ -34,7 +30,7 @@ Fixed::Fixed(const int number)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called"<< std::endl;
+	//std::cout << "Destructor called"<< std::endl;
 }
 
 
@@ -42,14 +38,88 @@ Fixed::~Fixed()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Fixed &				Fixed::operator=( Fixed const & rhs )
+Fixed  Fixed::operator=( Fixed const & rhs )
 {
 	if ( this != &rhs )
 		this->fixedPoint = rhs.getRawBits();
-	std::cout << "Copy assignment operator called" << std::endl;
 	return *this;
 }
 
+Fixed  Fixed::operator+(Fixed const &rhs )
+{
+	Fixed temp(this->toFloat() + rhs.toFloat());
+
+	return temp;
+}
+
+Fixed  Fixed::operator-(Fixed const &rhs )
+{
+	Fixed temp(this->toFloat() - rhs.toFloat());
+	return temp;
+}
+
+Fixed  Fixed::operator*(Fixed const &rhs )
+{
+	Fixed temp(this->toFloat() * rhs.toFloat());
+	return temp;
+}
+
+Fixed  Fixed::operator/(Fixed const &rhs )
+{
+	Fixed temp(this->toFloat() / rhs.toFloat());
+	return temp;
+}
+
+bool Fixed::operator==(Fixed const &rhs)
+{
+	return this->toFloat() == rhs.toFloat();
+}
+
+bool Fixed::operator!=(Fixed const &rhs)
+{
+	return this->toFloat() != rhs.toFloat();
+}
+
+bool Fixed::operator>=(Fixed const &rhs)
+{
+	return this->toFloat() >= rhs.toFloat();
+}
+
+bool Fixed::operator<=(Fixed const &rhs)
+{
+	return this->toFloat() <= rhs.toFloat();
+}
+
+bool Fixed::operator>(Fixed const &rhs)
+{
+	return this->toFloat() > rhs.toFloat();
+}
+
+bool Fixed::operator<(Fixed const &rhs)
+{
+	return this->toFloat() < rhs.toFloat();
+}
+
+Fixed & Fixed::operator++(void)
+{
+	this->fixedPoint++;
+	return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed temp(*this);
+	++this->fixedPoint;
+	return temp;
+}
+
+
+Fixed Fixed::operator--(void)
+{
+	if (this->fixedPoint - 1 > 0)
+		--this->fixedPoint;
+	return *this;
+}
 
 std::ostream &			operator<<( std::ostream & o, Fixed const & i )
 {
@@ -85,6 +155,39 @@ float Fixed::toFloat( void ) const
 	//std::cout << "tofloat member function called" << std::endl;
 	return this->fixedPoint / (1 << this->fracBits);
 }
+
+Fixed Fixed::min( Fixed &a, Fixed &b)
+{
+	if (a.fixedPoint < b.fixedPoint)
+		return a;
+	else
+		return b;
+}
+
+Fixed Fixed::max( Fixed &a, Fixed &b)
+{
+	if (a.fixedPoint < b.fixedPoint)
+		return b;
+	else
+		return a;
+}
+
+Fixed Fixed::min( Fixed const &a, Fixed const &b)
+{
+	if (a.fixedPoint < b.fixedPoint)
+		return a;
+	else
+		return b;
+}
+
+Fixed Fixed::max( Fixed const &a, Fixed const &b)
+{
+	if (a.fixedPoint < b.fixedPoint)
+		return b;
+	else
+		return a;
+}
+
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
