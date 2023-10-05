@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 
-OBJS  =  main.o Fixed.o POint.o bsp.o
+OBJS  =  main.o Fixed.o
 NAME = fixed
 CC = c++
 CFLAGS = -g -Wextra -Werror -Wall -std=c++98
@@ -25,14 +25,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
-		@echo "$(GREEN) [Success] ex02 compilation.$(WHITE)"
+		@echo "$(GREEN) [Success] ex03 compilation.$(WHITE)"
 
 clean:
 		@rm -rf $(OBJS)
-		@echo "$(CYAN) [cleaned] ex02 objects."
+		@echo "$(CYAN) [cleaned] ex03 objects."
 
 fclean: clean
 		@rm -rf $(NAME)
-		@echo "$(CYAN) [cleaned] ex02 executable.$(WHITE)"
+		@echo "$(CYAN) [cleaned] ex03 executable.$(WHITE)"
 
 re: fclean all
