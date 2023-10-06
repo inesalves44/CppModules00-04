@@ -5,6 +5,7 @@
 # include <string>
 # include "Fixed.hpp"
 
+
 class Point
 {
 
@@ -26,5 +27,6 @@ class Point
 };
 
 std::ostream &			operator<<( std::ostream & o, Point const & i );
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif /* *********************************************************** POINT_H */

@@ -58,7 +58,7 @@ Fixed Point::presentX() const
 	return (Fixed)this->x;
 }
 
-Fixed Point::presentY () const
+Fixed Point::presentY() const
 {
 	return (Fixed)this->y;
 }

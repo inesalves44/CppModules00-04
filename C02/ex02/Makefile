@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 
-OBJS  =  main.o Fixed.o POint.o bsp.o
+OBJS  =  main.o Fixed.o 
 NAME = fixed
 CC = c++
 CFLAGS = -g -Wextra -Werror -Wall -std=c++98
