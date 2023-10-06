@@ -11,10 +11,13 @@ class Point
 	public:
 
 		Point();
+		Point(float const a, float const b);
 		Point( Point const & src );
 		~Point();
 
 		Point &		operator=( Point const & rhs );
+		Fixed presentX() const;
+		Fixed presentY() const;
 
 	private:
 		Fixed const x;
