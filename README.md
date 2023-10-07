@@ -1,5 +1,4 @@
-# c00 e C01 prontos!
+# c00 e C01 C02 prontos!
 
 
-C02 com segfault ver o que se passa!
 
