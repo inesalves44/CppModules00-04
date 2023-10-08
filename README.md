@@ -1,6 +1,9 @@
 # c00 e C01 C02 prontos!
 
 
-Para o C02:
--> testar memory leaks;
--> criar mais testes no main!
+Para o C03:
+-> estudar C03
+-> fazer exercicios
+-> comentar funcoes
+-> memory leaks
+-> testes

@@ -80,26 +80,26 @@ Fixed &   Fixed::operator=( Fixed const & rhs )
  * @param rhs -> to sum to an object
  * @return Fixed -> object
  */
-Fixed  Fixed::operator+(Fixed const &rhs )
+Fixed  Fixed::operator+(Fixed const &rhs ) const
 {
 	Fixed temp(this->toFloat() + rhs.toFloat());
 
 	return temp;
 }
 
-Fixed  Fixed::operator-(Fixed const &rhs )
+Fixed  Fixed::operator-(Fixed const &rhs ) const
 {
 	Fixed temp(this->toFloat() - rhs.toFloat());
 	return temp;
 }
 
-Fixed  Fixed::operator*(Fixed const &rhs )
+Fixed  Fixed::operator*(Fixed const &rhs ) const
 {
 	Fixed temp(this->toFloat() * rhs.toFloat());
 	return temp;
 }
 
-Fixed  Fixed::operator/(Fixed const &rhs )
+Fixed  Fixed::operator/(Fixed const &rhs ) const
 {
 	Fixed temp(this->toFloat() / rhs.toFloat());
 	return temp;
@@ -115,32 +115,32 @@ Fixed  Fixed::operator/(Fixed const &rhs )
  * @return true -> if equal
  * @return false -> if they are not equal
  */
-bool Fixed::operator==(Fixed const &rhs)
+bool Fixed::operator==(Fixed rhs) const
 {
 	return this->toFloat() == rhs.toFloat();
 }
 
-bool Fixed::operator!=(Fixed const &rhs)
+bool Fixed::operator!=(Fixed rhs) const
 {
 	return this->toFloat() != rhs.toFloat();
 }
 
-bool Fixed::operator>=(Fixed const &rhs)
+bool Fixed::operator>=(Fixed rhs) const
 {
 	return this->toFloat() >= rhs.toFloat();
 }
 
-bool Fixed::operator<=(Fixed const &rhs)
+bool Fixed::operator<=(Fixed rhs) const
 {
 	return this->toFloat() <= rhs.toFloat();
 }
 
-bool Fixed::operator>(Fixed const &rhs)
+bool Fixed::operator>(Fixed rhs)  const
 {
 	return this->toFloat() > rhs.toFloat();
 }
 
-bool Fixed::operator<(Fixed const &rhs)
+bool Fixed::operator<(Fixed rhs) const
 {
 	return this->toFloat() < rhs.toFloat();
 }
@@ -153,7 +153,7 @@ bool Fixed::operator<(Fixed const &rhs)
  * adds one to the object
  * @return Fixed& -> returns the object
  */
-Fixed & Fixed::operator++(void)
+Fixed & Fixed::operator++(void) 
 {
 	++this->fixedPoint;
 	return *this;
@@ -165,7 +165,7 @@ Fixed & Fixed::operator++(void)
  * the post has an int as a parameter to be different
  * @return Fixed 
  */
-Fixed Fixed::operator++(int)
+Fixed Fixed::operator++(int) 
 {
 	Fixed temp(*this);
 	++this->fixedPoint;
@@ -173,14 +173,14 @@ Fixed Fixed::operator++(int)
 }
 
 
-Fixed & Fixed::operator--(void)
+Fixed & Fixed::operator--(void) 
 {
 	if (this->fixedPoint - 1 > 0)
 		--this->fixedPoint;
 	return *this;
 }
 
-Fixed Fixed::operator--(int)
+Fixed Fixed::operator--(int) 
 {
 	Fixed temp(*this);
 	--this->fixedPoint;
