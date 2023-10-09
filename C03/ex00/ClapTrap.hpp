@@ -22,9 +22,9 @@ class ClapTrap
 
 	private:
 		std::string name;
-		int hitPoints = 10;
-		int energyPoint = 10;
-		int attackDamage = 0;
+		int hitPoints;
+		int energyPoint;
+		int attackDamage;
 };
 
 std::ostream &			operator<<( std::ostream & o, ClapTrap const & i );
