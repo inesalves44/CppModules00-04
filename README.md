@@ -2,8 +2,6 @@
 
 
 Para o C03:
--> estudar C03
--> fazer exercicios
 -> comentar funcoes
 -> memory leaks
 -> testes
