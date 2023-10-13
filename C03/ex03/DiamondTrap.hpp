@@ -7,7 +7,7 @@
 # include "FlagTrap.hpp"
 # include "ScavTrap.hpp"
 
-class DiamondTrap
+class DiamondTrap : public ScavTrap, public FlagTrap
 {
 
 	public:
@@ -18,7 +18,10 @@ class DiamondTrap
 
 		DiamondTrap &		operator=( DiamondTrap const & rhs );
 
+		void whoAmI();
+
 	private:
+		std::string name;
 
 };
 

@@ -12,7 +12,7 @@
 
 
 OBJS  =  main.o ClapTrap.o ScavTrap.o FlagTrap.o DiamondTrap.o
-NAME = flagTrap
+NAME = diamondTrap
 CC = c++
 CFLAGS = -Wextra -Werror -Wall -std=c++98
 GREEN           :=      \033[0;32m

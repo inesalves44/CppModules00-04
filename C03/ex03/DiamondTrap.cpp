@@ -46,6 +46,10 @@ std::ostream &			operator<<( std::ostream & o, DiamondTrap const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void DiamondTrap::whoAmI()
+{
+
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
