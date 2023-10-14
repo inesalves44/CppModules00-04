@@ -35,7 +35,7 @@ ClapTrap::ClapTrap( const ClapTrap & src )
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Default detructor"<< std::endl;
+	std::cout << "Default detructor for Clap Trap"<< std::endl;
 }
 
 

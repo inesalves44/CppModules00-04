@@ -3,7 +3,6 @@
 
 # include <iostream>
 # include <string>
-# include "ClapTrap.hpp"
 # include "FlagTrap.hpp"
 # include "ScavTrap.hpp"
 
@@ -12,16 +11,18 @@ class DiamondTrap : public ScavTrap, public FlagTrap
 
 	public:
 
-		DiamondTrap();
+		DiamondTrap( std::string name );
 		DiamondTrap( DiamondTrap const & src );
 		~DiamondTrap();
 
-		DiamondTrap &		operator=( DiamondTrap const & rhs );
+		DiamondTrap	&operator=( DiamondTrap const & rhs );
 
-		void whoAmI();
+		using		ScavTrap::attack;
+		void		whoAmI();
 
 	private:
-		std::string name;
+
+		std::string	name;
 
 };
 

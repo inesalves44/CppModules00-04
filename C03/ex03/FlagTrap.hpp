@@ -5,7 +5,7 @@
 # include <iostream>
 # include <string>
 
-class FlagTrap : public ClapTrap
+class FlagTrap : virtual public ClapTrap
 {
 
 	public:

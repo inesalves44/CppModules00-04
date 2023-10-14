@@ -1,15 +1,12 @@
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FlagTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-    FlagTrap flags("Rihanna");
+    DiamondTrap s("Sia");
 
-    std::cout << flags;
-    flags.highFivesGuys();
-    flags.attack("Christina");
-    flags.beRepaired(10);
-    std::cout << flags;
+    s.attack("Rihanna");
+    s.whoAmI();
+
+    std::cout << s;
     return 0;
 }
