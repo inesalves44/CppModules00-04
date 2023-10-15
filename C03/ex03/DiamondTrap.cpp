@@ -4,6 +4,10 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
+/**
+ * @brief Construct a new Diamond Trap:: Diamond Trap object
+ * @param newName 
+ */
 DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName + "_clapTrap"), FlagTrap(newName), ScavTrap(newName)
 {
 	this->name = newName;
@@ -14,7 +18,10 @@ DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName + "_clapTrap"),
 	std::cout << "Name Constructor for Diamond Trap " << this->name << std::endl;
 }
 
-
+/**
+ * @brief Construct a new Diamond Trap:: Diamond Trap object
+ * @param src 
+ */
 DiamondTrap::DiamondTrap( const DiamondTrap & src ) : ClapTrap(src), ScavTrap(src), FlagTrap(src)
 {
 	this->name = src.name;
@@ -26,9 +33,12 @@ DiamondTrap::DiamondTrap( const DiamondTrap & src ) : ClapTrap(src), ScavTrap(sr
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
+/**
+ * @brief Destroy the Diamond Trap:: Diamond Trap object
+ */
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << "Default Destructor for Diamond Trap" << std::endl;
+	std::cout << "Default Destructor for Diamond Trap " << this->name << std::endl;
 }
 
 
@@ -36,6 +46,11 @@ DiamondTrap::~DiamondTrap()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
+/**
+ * @brief compares and changes if different
+ * @param rhs 
+ * @return DiamondTrap& 
+ */
 DiamondTrap &				DiamondTrap::operator=( DiamondTrap const & rhs )
 {
 	if ( this != &rhs )
@@ -47,6 +62,7 @@ DiamondTrap &				DiamondTrap::operator=( DiamondTrap const & rhs )
 	}
 	return *this;
 }
+
 
 std::ostream &			operator<<( std::ostream & o, DiamondTrap const & i )
 {
@@ -67,7 +83,10 @@ std::ostream &			operator<<( std::ostream & o, DiamondTrap const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-
+/**
+ * @brief shows who is the clap trap
+ * 
+ */
 void DiamondTrap::whoAmI()
 {
 	std::cout << "DimondTrap name: " << this->name << std::endl

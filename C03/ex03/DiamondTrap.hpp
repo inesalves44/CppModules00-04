@@ -6,6 +6,15 @@
 # include "FlagTrap.hpp"
 # include "ScavTrap.hpp"
 
+/**
+ * @brief https://www.geeksforgeeks.org/virtual-base-class-in-c/
+ * Virtual base classes are used in virtual 
+ * inheritance in a way of preventing multiple “instances” 
+ * of a given class appearing in an inheritance hierarchy 
+ * when using multiple inheritances. 
+ * 
+ */
+
 class DiamondTrap : public ScavTrap, public FlagTrap
 {
 
@@ -17,6 +26,12 @@ class DiamondTrap : public ScavTrap, public FlagTrap
 
 		DiamondTrap	&operator=( DiamondTrap const & rhs );
 
+		/**
+		 * The using keyword is used to:
+    	Bring a specific member from the namespace into the current scope.
+    	Bring all members from the namespace into​ the current scope.
+    	Bring a base class method ​or variable into the current class’s scope.
+		 */
 		using		ScavTrap::attack;
 		void		whoAmI();
 

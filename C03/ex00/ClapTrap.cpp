@@ -14,7 +14,7 @@ ClapTrap::ClapTrap()
 	this->energyPoint = 10;
 	this->hitPoints = 10;
 	this->attackDamage = 0;
-	std::cout << "Default ClapTRap constructor" << std::endl;
+	std::cout << "Default ClapTrap constructor" << std::endl;
 }
 
 /**
@@ -54,7 +54,7 @@ ClapTrap::ClapTrap( const ClapTrap & src )
  */
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Default detructor for ClapTrap"<< std::endl;
+	std::cout << "Default detructor for ClapTrap: " << this->name << std::endl;
 }
 
 
@@ -80,14 +80,20 @@ ClapTrap &				ClapTrap::operator=( ClapTrap const & rhs )
 	return *this;
 }
 
-
+/**
+ * @brief print the object in o
+ * @param o -> output stream
+ * @param i -> object
+ * @return std::ostream& print in o.s
+ */
 std::ostream &			operator<<( std::ostream & o, ClapTrap const & i )
 {
 	o << "-------------Presentation---------------" << std::endl;
-	o << "ClapTrap = Name: " << ClapTrap::getName(i) << std::endl
-	<< " Hit Points: " << ClapTrap::getHitPoints(i) << std::endl
-	<< " Energy Points: " << ClapTrap::getEnergyPoints(i) << std::endl
-	<< " Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
+	o << "ClapTrap:" << std::endl
+	<< "Name: " << ClapTrap::getName(i) << std::endl
+	<< "Hit Points: " << ClapTrap::getHitPoints(i) << std::endl
+	<< "Energy Points: " << ClapTrap::getEnergyPoints(i) << std::endl
+	<< "Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
 	
 	o << "-------------------------------------" << std::endl;
 	return o;
@@ -97,6 +103,11 @@ std::ostream &			operator<<( std::ostream & o, ClapTrap const & i )
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
+
+/**
+ * @brief attack of the ClapTrap causing some damage.
+ * @param target -> target of the attack
+ */
 void ClapTrap::attack(const std::string& target)
 {
 	if (this->hitPoints <= 0 || this->energyPoint <= 0)
@@ -104,18 +115,26 @@ void ClapTrap::attack(const std::string& target)
 		std::cout << this->name << " can't attack it has nothing left in him"<< std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing "<< this->attackDamage 
+	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing "<< this->hitPoints 
 	<< " points of damage!"<< std::endl;
-	this->hitPoints--;
+	this->hitPoints = 0;
 	this->energyPoint--;
 }
 
+/**
+ * @brief when clap is attacked
+ * @param amount -> amout of hitpoints 
+ */
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << this->name << " has been attacked by " << amount << " hit points!"<< std::endl;
 	this->attackDamage += amount;
 }
 
+/**
+ * @brief -> when ClapTrap repairs itself
+ * @param amount -> amount to repair
+ */
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if(this->energyPoint <= 0)
@@ -128,7 +147,12 @@ void ClapTrap::beRepaired(unsigned int amount)
 	this->hitPoints += amount;
 }
 
-
+#pragma region printVariables
+/**
+ * @brief static function to get the name of the ClapTrap
+ * @param i  -> object
+ * @return std::string -> returns the name 
+ */
 std::string ClapTrap::getName(ClapTrap const &i) 
 {
 	return i.name;
@@ -148,7 +172,7 @@ int ClapTrap::getAttackDamage(ClapTrap const &i)
 {
 	return i.attackDamage;
 }
-
+#pragma endregion
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

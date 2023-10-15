@@ -4,11 +4,23 @@
 int main(void)
 {
     ScavTrap testClap("Nelson");
+    ScavTrap test2(testClap);
+    ScavTrap testScav("Sergio");
 
     std::cout << testClap;
-    testClap.attack("Sergio");
+    std::cout << test2;
+    std::cout << testScav;
+
+    testClap.attack("Agatha");
     testClap.beRepaired(4);
-    std::cout << testClap;
+    testScav.guardGate();
+    testScav.attack("Olivia");
     testClap.guardGate();
+    testScav.beRepaired(4);
+    testClap.takeDamage(30);
+
+    std::cout << testClap;
+    std::cout << test2;
+    std::cout << testScav;
     return 0;
 }
