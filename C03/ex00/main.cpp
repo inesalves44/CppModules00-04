@@ -3,8 +3,12 @@
 int main(void)
 {
     ClapTrap test("Aníbal");
+    ClapTrap test2(test);
+    ClapTrap test3();
 
-    test.attack("Adolfo");
+    std::cout << test;
+    std::cout << test2;
+    /*test.attack("Adolfo");
     test.beRepaired(3);
     test.attack("Amadeu");
     test.beRepaired(4);
@@ -13,9 +17,9 @@ int main(void)
     test.attack("Rui");
     test.beRepaired(3);
     test.beRepaired(5);
-    test.attack("bARBARA");
+    test.attack("Barbara");
     test.beRepaired(5);
     test.takeDamage(3);
-    test.beRepaired(5);
+    test.beRepaired(5);*/
     return 0;
 }

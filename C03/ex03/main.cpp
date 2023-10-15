@@ -4,7 +4,7 @@ int main(void)
 {
     DiamondTrap s("Sia");
 
-    s.attack("Rihanna");
+    //s.attack("Rihanna");
     s.whoAmI();
 
     std::cout << s;

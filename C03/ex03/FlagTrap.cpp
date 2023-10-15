@@ -17,7 +17,7 @@ FlagTrap::FlagTrap(std::string name) : ClapTrap(name)
 	this->energyPoint = 100;
 	this->hitPoints = 100;
 	this->attackDamage = 30;
-	std::cout << "constructor for FlagTrap " << this->name << std::endl;
+	std::cout << "Constructor for FlagTrap" << std::endl;
 }
 
 FlagTrap::FlagTrap( const FlagTrap & src ) : ClapTrap(src)
@@ -25,7 +25,7 @@ FlagTrap::FlagTrap( const FlagTrap & src ) : ClapTrap(src)
 	this->energyPoint = 100;
 	this->hitPoints = 100;
 	this->attackDamage = 30;
-	std::cout << "Copy constructor for FlagTrap " << this->name << std::endl;
+	std::cout << "Copy constructor for FlagTrap" << std::endl;
 }
 
 
@@ -57,9 +57,15 @@ FlagTrap &				FlagTrap::operator=( FlagTrap const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, FlagTrap const & i )
 {
-	o << "FlagTrap = Name: " << ClapTrap::getName(i) << " Hit Points: " << ClapTrap::getHitPoints(i) 
-	<< " Energy Points: " << ClapTrap::getEnergyPoints(i) << " Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
+	o << "-------------Presentation---------------" << std::endl;
 	
+	o << "FlagTrap = Name: " << ClapTrap::getName(i) << std::endl
+	<< " Hit Points: " << ClapTrap::getHitPoints(i) << std::endl
+	<< " Energy Points: " << ClapTrap::getEnergyPoints(i) << std::endl
+	<< " Attack Damage: " << ClapTrap::getAttackDamage(i) 
+	<< std::endl;
+	
+	o << "-------------------------------------" << std::endl;
 	return o;
 }
 

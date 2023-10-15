@@ -17,7 +17,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->energyPoint = 50;
 	this->hitPoints = 100;
 	this->attackDamage = 20;
-	std::cout << "constructor for ScavTrap " << this->name << std::endl;
+	std::cout << "constructor for ScavTrap" << std::endl;
 }
 
 ScavTrap::ScavTrap( const ScavTrap & src ) : ClapTrap(src)
@@ -25,7 +25,7 @@ ScavTrap::ScavTrap( const ScavTrap & src ) : ClapTrap(src)
 	this->energyPoint = 50;
 	this->hitPoints = 100;
 	this->attackDamage = 20;
-	std::cout << "Copy constructor for ScavTrap " << this->name << std::endl;
+	std::cout << "Copy constructor for ScavTrap" << std::endl;
 }
 
 
@@ -57,9 +57,14 @@ ScavTrap &				ScavTrap::operator=( ScavTrap const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, ScavTrap const & i )
 {
-	o << "ScavTrap = Name: " << ClapTrap::getName(i) << " Hit Points: " << ClapTrap::getHitPoints(i) 
-	<< " Energy Points: " << ClapTrap::getEnergyPoints(i) << " Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
+	o << "-------------Presentation---------------" << std::endl;
+
+	o << "ScavTrap = Name: " << ClapTrap::getName(i) << std::endl
+	<< " Hit Points: " << ClapTrap::getHitPoints(i) << std::endl
+	<< " Energy Points: " << ClapTrap::getEnergyPoints(i) << std::endl
+	<< " Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
 	
+	o << "-------------------------------------" << std::endl;
 	return o;
 }
 

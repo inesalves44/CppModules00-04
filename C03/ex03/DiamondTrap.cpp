@@ -4,12 +4,12 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName + "_clapTrap"), ScavTrap(newName), FlagTrap(newName)
+DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName + "_clapTrap"), FlagTrap(newName), ScavTrap(newName)
 {
 	this->name = newName;
-	this->hitPoints = FlagTrap::hitPoints;
-	this->energyPoint = ScavTrap::energyPoint;
-	this->attackDamage = FlagTrap::attackDamage;
+	this->hitPoints = 100;
+	this->energyPoint = 50;
+	this->attackDamage = 30;
 
 	std::cout << "Name Constructor for Diamond Trap " << this->name << std::endl;
 }
@@ -28,7 +28,7 @@ DiamondTrap::DiamondTrap( const DiamondTrap & src ) : ClapTrap(src), ScavTrap(sr
 
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << "Destructor for Diamond Trap";
+	std::cout << "Default Destructor for Diamond Trap" << std::endl;
 }
 
 
@@ -50,8 +50,15 @@ DiamondTrap &				DiamondTrap::operator=( DiamondTrap const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, DiamondTrap const & i )
 {
-	o << "DimondTrap = Name: " << ClapTrap::getName(i) << " Hit Points: " << ClapTrap::getHitPoints(i) 
-	<< " Energy Points: " << ClapTrap::getEnergyPoints(i) << " Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
+	o << "-------------Presentation---------------" << std::endl;
+
+	o << "DimondTrap :" << std::endl
+	<< "Name: " << ClapTrap::getName(i) << std::endl
+	<< "Hit Points: " << ClapTrap::getHitPoints(i) << std::endl
+	<< "Energy Points: " << ClapTrap::getEnergyPoints(i) << std::endl
+	<< "Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
+
+	o << "-------------------------------------" << std::endl;
 	return o;
 }
 
@@ -63,7 +70,8 @@ std::ostream &			operator<<( std::ostream & o, DiamondTrap const & i )
 
 void DiamondTrap::whoAmI()
 {
-	std::cout << "DimondTrap name: " << this->name << std::endl << "ClapTrap name: " << ClapTrap::name << std::endl;
+	std::cout << "DimondTrap name: " << this->name << std::endl
+	<< "ClapTrap name: " << ClapTrap::name << std::endl;
 }
 
 /*

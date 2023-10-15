@@ -10,7 +10,8 @@ ClapTrap::ClapTrap()
 	this->energyPoint = 10;
 	this->hitPoints = 10;
 	this->attackDamage = 0;
-	std::cout << "Default constructor" << std::endl;
+
+	std::cout << "Default ClapTrap constructor" << this->name << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string newName)
@@ -19,13 +20,13 @@ ClapTrap::ClapTrap(std::string newName)
 	this->energyPoint = 10;
 	this->hitPoints = 10;
 	this->attackDamage = 0;
-	std::cout << "constructor for " << this->name << std::endl;
+	std::cout << "Constructor ClapTrap for " << this->name << std::endl;
 }
 
 ClapTrap::ClapTrap( const ClapTrap & src )
 {
 	*this = src;
-	std::cout << "constructor copy"<< std::endl;
+	std::cout << "constructor copy ClapTrap " << this->name << std::endl;
 }
 
 
@@ -35,7 +36,7 @@ ClapTrap::ClapTrap( const ClapTrap & src )
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Default detructor for Clap Trap"<< std::endl;
+	std::cout << "Default detructor for ClapTrap"<< std::endl;
 }
 
 
@@ -58,8 +59,13 @@ ClapTrap &				ClapTrap::operator=( ClapTrap const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, ClapTrap const & i )
 {
-	o << "clapTrap = Name: " << ClapTrap::getName(i) << " Hit Points: " << ClapTrap::getHitPoints(i) 
-	<< " Energy Points: " << ClapTrap::getEnergyPoints(i) << " Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
+	o << "-------------Presentation---------------" << std::endl;
+	o << "ClapTrap = Name: " << ClapTrap::getName(i) << std::endl
+	<< " Hit Points: " << ClapTrap::getHitPoints(i) << std::endl
+	<< " Energy Points: " << ClapTrap::getEnergyPoints(i) << std::endl
+	<< " Attack Damage: " << ClapTrap::getAttackDamage(i) << std::endl;
+	
+	o << "-------------------------------------" << std::endl;
 	return o;
 }
 
@@ -90,11 +96,11 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if(this->energyPoint <= 0)
 	{
-		std::cout << this->name << " has no energy left"<< std::endl;
+		std::cout << this->name << " has no energy left" << std::endl;
 		return ;
 	}
 	this->energyPoint--;
-	std::cout << this->name << " has repaired itself"<< std::endl;
+	std::cout << this->name << " has repaired itself" << std::endl;
 	this->hitPoints += amount;
 }
 
