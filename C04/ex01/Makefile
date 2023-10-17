@@ -25,14 +25,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
-		@echo "$(GREEN) [Success] ex00 compilation.$(WHITE)"
+		@echo "$(GREEN) [Success] ex01 compilation.$(WHITE)"
 
 clean:
 		@rm -rf $(OBJS)
-		@echo "$(CYAN) [cleaned] ex00 objects."
+		@echo "$(CYAN) [cleaned] ex01 objects."
 
 fclean: clean
 		@rm -rf $(NAME)
-		@echo "$(CYAN) [cleaned] ex00 executable.$(WHITE)"
+		@echo "$(CYAN) [cleaned] ex01 executable.$(WHITE)"
 
 re: fclean all

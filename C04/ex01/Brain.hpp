@@ -15,7 +15,7 @@ class Brain
 
 		Brain &		operator=( Brain const & rhs );
 
-		size_t getIdeasNumber() const;
+		int getIdeasNumber() const;
 
 		std::string getIdeaValue(int i) const;
 
@@ -23,6 +23,7 @@ class Brain
 
 	private:
 		std::string ideas[100];
+		int numIdeas;
 
 };
 

@@ -61,8 +61,15 @@ void Animal::makeSound() const
 	std::cout << "This animal doesn't make sound" << std::endl;
 }
 
+void Animal::giveIdeas(std::string string) const
+{
+	
+}
 
-
+void Animal::presentIdeas() const 
+{
+	
+}
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

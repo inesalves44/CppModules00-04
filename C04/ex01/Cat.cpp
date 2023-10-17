@@ -59,14 +59,14 @@ void Cat::makeSound() const
 	std::cout << "Cat: miau miau" << std::endl;
 }
 
-void Cat::giveIdeas(std::string string)
+void Cat::giveIdeas(std::string string) const 
 {
 	this->brain->getIdea(string);
 }
 
-void Cat::presentIdeas()
+void Cat::presentIdeas() const
 {
-	std::cout << this->brain;
+	std::cout << *this->brain;
 }
 
 /*

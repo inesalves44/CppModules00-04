@@ -38,7 +38,7 @@ Brain &				Brain::operator=( Brain const & rhs )
 {
 	if ( this != &rhs )
 	{
-		for (size_t i = 0; i < this->ideas->length(); i++)
+		for (size_t i = 0; i < this->ideas->size(); i++)
 		{
 			this->ideas[i] = rhs.ideas[i];
 		}
@@ -49,7 +49,7 @@ Brain &				Brain::operator=( Brain const & rhs )
 std::ostream &			operator<<( std::ostream & o, Brain const & i )
 {
 	o << "Brain Ideas: " << std::endl;
-	for (size_t j = 0; j < i.getIdeasNumber(); j++)
+	for (int j = 0; j < i.getIdeasNumber(); j++)
 	{
 		o << i.getIdeaValue(j) << std::endl;
 	}
@@ -62,9 +62,9 @@ std::ostream &			operator<<( std::ostream & o, Brain const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-size_t Brain::getIdeasNumber() const
+int Brain::getIdeasNumber() const
 {
-	return this->ideas->length();
+	return this->numIdeas;
 }
 
 std::string Brain::getIdeaValue(int i) const
@@ -76,10 +76,11 @@ void	Brain::getIdea(std::string idea)
 {
 	int i = 0;
 	
-	while (i < this->ideas->length())
+	while (i < this->numIdeas)
 		i++;
 	
 	ideas[i] = idea;
+	this->numIdeas++;
 }
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

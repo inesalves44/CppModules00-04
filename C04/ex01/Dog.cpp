@@ -58,14 +58,14 @@ void Dog::makeSound() const
 	std::cout << "Dog: wof wof" << std::endl;
 }
 
-void Dog::giveIdeas(std::string string)
+void Dog::giveIdeas(std::string string) const
 {
 	this->brain->getIdea(string);
 }
 
-void Dog::presentIdeas()
+void Dog::presentIdeas() const 
 {
-	std::cout << this->brain;
+	std::cout << *this->brain;
 }
 
 /*
