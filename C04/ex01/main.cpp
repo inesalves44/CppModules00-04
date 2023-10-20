@@ -20,7 +20,7 @@ int main(void)
         if (i % 2 == 0)
         {
             test[i]->giveIdeas("I love you so much you are the best!!!");
-             test[i]->giveIdeas("SQUIRREL");
+            test[i]->giveIdeas("SQUIRREL");
         }
         else
         {
