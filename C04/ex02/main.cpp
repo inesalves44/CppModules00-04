@@ -5,9 +5,15 @@
 
 int main(void)
 {
-    Animal test;
+    //Animal test; //it does not work!
+
+    Animal *bobby = new Dog();
+
+    bobby->getType();
+    bobby->giveIdeas("I wove u");
+    bobby->presentIdeas();    
     
-    test.makeSound();
+    delete bobby;
     return 0;
 }
 

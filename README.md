@@ -1,4 +1,7 @@
-# c00 e C01 C02 prontos!
+# c00 e C01 C02  C03 `prontos!
 
-Para o C03:
+C04:
+-> acabar ex003
+-> testes e verificacoes
+-> comentar
 -> memory leaks

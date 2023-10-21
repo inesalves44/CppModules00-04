@@ -7,11 +7,12 @@
 Brain::Brain()
 {
 	std::cout << "Constructor for brain" << std::endl;
+	this->numIdeas = 0;
 }
 
 Brain::Brain( const Brain & src )
 {
-	for (size_t i = 0; i < this->ideas->length(); i++)
+	for (size_t i = 0; i < src.getIdeasNumber(); i++)
 	{
 		this->ideas[i] = src.ideas[i];
 	}

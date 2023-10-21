@@ -7,11 +7,12 @@
 Brain::Brain()
 {
 	std::cout << "Constructor for brain" << std::endl;
+	this->numIdeas = 0;
 }
 
 Brain::Brain( const Brain & src )
 {
-	for (size_t i = 0; i < this->ideas->length(); i++)
+	for (size_t i = 0; i < src.getIdeasNumber(); i++)
 	{
 		this->ideas[i] = src.ideas[i];
 	}
@@ -48,12 +49,12 @@ Brain &				Brain::operator=( Brain const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, Brain const & i )
 {
-	o << "Brain Ideas: " << std::endl;
+	o << "------------------Brain Ideas: ------------------" << std::endl;
 	for (int j = 0; j < i.getIdeasNumber(); j++)
 	{
 		o << i.getIdeaValue(j) << std::endl;
 	}
-	o << "End of Ideas" << std::endl;
+	o << "------------------End of Ideas------------------" << std::endl;
 	return o;
 }
 
