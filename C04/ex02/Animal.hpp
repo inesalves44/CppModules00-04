@@ -20,8 +20,8 @@ class Animal
 		//https://www.geeksforgeeks.org/virtual-function-cpp/
 		virtual void makeSound() const = 0;
 
-		virtual void giveIdeas(std::string string) const;
-		virtual void presentIdeas() const;
+		virtual void giveIdeas(std::string string) const = 0;
+		virtual void presentIdeas() const = 0;
 
 	protected:
 		std::string type;

@@ -4,6 +4,12 @@
 # include <iostream>
 # include <string>
 
+#include "Character.hpp"
+#include "ICharacter.hpp"
+
+
+class ICharacter;
+
 class AMateria
 {
 
@@ -12,13 +18,13 @@ class AMateria
 		AMateria();
 		AMateria( AMateria const & src );
 		AMateria(std::string const & type);
-		~AMateria();
+		virtual ~AMateria();
 
 		AMateria &		operator=( AMateria const & rhs );
 
 		std::string const & GetType() const;
 		virtual AMateria* clone() const = 0;
-		//virtual void use(ICharacter& target);
+		virtual void use(ICharacter& target) = 0;
 
 	protected:
 		

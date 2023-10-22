@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 
-OBJS  =  main.o Ice.o #Cure.o
+OBJS  =  main.o AMateria.o Ice.o Cure.o Character.o MateriaSource.o
 NAME = ex3
 CC = c++
 CFLAGS = -Wextra -Werror -Wall -std=c++98
