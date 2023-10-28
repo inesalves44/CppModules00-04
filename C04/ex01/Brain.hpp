@@ -23,6 +23,7 @@ class Brain
 
 	private:
 		std::string ideas[100];
+		//counting how many ideas has the brain
 		int numIdeas;
 
 };

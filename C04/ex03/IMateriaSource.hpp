@@ -6,6 +6,9 @@
 
 # include "AMateria.hpp"
 
+/**
+ * @brief interface for Materia Source virtual class
+ */
 class IMateriaSource
 {
 

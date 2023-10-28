@@ -18,6 +18,7 @@ class Animal
 
 		virtual std::string getType() const;
 		//https://www.geeksforgeeks.org/virtual-function-cpp/
+		//all the function equal zero so the class is purely virtual
 		virtual void makeSound() const = 0;
 
 		virtual void giveIdeas(std::string string) const = 0;

@@ -5,6 +5,11 @@
 # include <string>
 # include "AMateria.hpp"
 
+
+/**
+ * @brief ice inherits from AMateria
+ */
+
 class Ice : public AMateria
 {
 

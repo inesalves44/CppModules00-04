@@ -8,6 +8,9 @@
 
 class AMateria;
 
+/**
+ * @brief interface for character virtual class
+ */
 class ICharacter
 {
 

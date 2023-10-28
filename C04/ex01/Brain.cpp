@@ -4,6 +4,9 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
+/**
+ * @brief Construct a new Brain:: Brain object
+ */
 Brain::Brain()
 {
 	std::cout << "Constructor for brain" << std::endl;
@@ -47,14 +50,20 @@ Brain &				Brain::operator=( Brain const & rhs )
 	return *this;
 }
 
+/**
+ * @brief priints all the ideas.
+ * @param o ->output stream
+ * @param i -> object to print
+ * @return std::ostream& 
+ */
 std::ostream &			operator<<( std::ostream & o, Brain const & i )
 {
-	o << "Brain Ideas: " << std::endl;
+	o << "----------Brain Ideas -------------" << std::endl;
 	for (int j = 0; j < i.getIdeasNumber(); j++)
 	{
 		o << i.getIdeaValue(j) << std::endl;
 	}
-	o << "End of Ideas" << std::endl;
+	o << "----------End of Ideas-------------" << std::endl;
 	return o;
 }
 
@@ -63,24 +72,40 @@ std::ostream &			operator<<( std::ostream & o, Brain const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+/**
+ * @brief get how many ideas the brain has.
+ * @return int -> returns the number
+ */
 int Brain::getIdeasNumber() const
 {
 	return this->numIdeas;
 }
 
+/**
+ * @brief returns the idea of the index passed as paramets
+ * @param i -> index
+ * @return std::string _>idea 
+ */
 std::string Brain::getIdeaValue(int i) const
 {
 	return this->ideas[i];
 }
 
+/**
+ * @brief first checks if there are already 100 ideas
+ * if not it adds the idea to the numideas space.
+ * it also then adds one to the number of ideas
+ * @param idea -> idea to give the animal
+ */
 void	Brain::getIdea(std::string idea)
 {
-	int i = 0;
-	
-	while (i < this->numIdeas)
-		i++;
-	
-	ideas[i] = idea;
+	if (this->numIdeas > 100)
+	{
+		std::cout << "Can't have more ideas" << std::endl;
+		return ;
+	}
+
+	ideas[this->numIdeas] = idea;
 	this->numIdeas++;
 }
 /*

@@ -45,6 +45,10 @@ Cure &				Cure::operator=( Cure const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+/**
+ * @brief clone a cure
+ * @return AMateria* 
+ */
 AMateria* Cure::clone() const
 {
 	AMateria *test = new Cure();
@@ -52,6 +56,11 @@ AMateria* Cure::clone() const
 	return test;
 }
 
+/**
+ * @brief THIS IS THE OBJECTIVE OF CURE MATERIA
+ * 
+ * @param target 
+ */
 void Cure::use(ICharacter& target)
 {
 	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;

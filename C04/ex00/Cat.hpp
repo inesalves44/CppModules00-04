@@ -6,6 +6,10 @@
 
 # include "Animal.hpp"
 
+/**
+ * @brief calss cat that inherites from Animal
+ * the destructors need to be virtual.
+ */
 class Cat : public Animal
 {
 

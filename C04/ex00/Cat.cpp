@@ -4,16 +4,25 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
+/**
+ * @brief Construct a new Cat:: Cat object
+ * Default cat constructor
+ */
 Cat::Cat()
 {
 	this->type = "Cat";
 	std::cout << "Default cat constructor" << std::endl;
 }
 
+/**
+ * @brief Construct a new Cat:: Cat object
+ * COPY CAT CONSTRUCTOR
+ * @param src -> cat object to copy
+ */
 Cat::Cat( const Cat & src )
 {
 	this->type = src.type;
-	std::cout << "Default cat constructor" << std::endl;
+	std::cout << "copy cat constructor" << std::endl;
 }
 
 
@@ -21,6 +30,10 @@ Cat::Cat( const Cat & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
+/**
+ * @brief Destroy the Cat:: Cat object
+ * cat destructor 
+ */
 Cat::~Cat()
 {
 	std::cout << "Cat Destructor" << std::endl;

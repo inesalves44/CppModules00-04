@@ -4,12 +4,21 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
+/**
+ * @brief Construct a new Animal:: Animal object
+ * Default constructor
+ */
 Animal::Animal()
 {
 	this->type = "No one";
 	std::cout << "Default animal constructor" << std::endl;
 }
 
+/**
+ * @brief Construct a new Animal:: Animal object
+ * Copy constructor
+ * @param src 
+ */
 Animal::Animal( const Animal & src )
 {
 	this->type = src.getType();
@@ -21,6 +30,10 @@ Animal::Animal( const Animal & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
+/**
+ * @brief Destroy the Animal:: Animal object
+ * destructor for animal
+ */
 Animal::~Animal()
 {
 	std::cout << "Animal destructor" << std::endl;
@@ -31,6 +44,12 @@ Animal::~Animal()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
+/**
+ * @brief overload operator
+ * if the object is different it changes to the object passed as parameter
+ * @param rhs -> animal to copy
+ * @return Animal& -> this object
+ */
 Animal &				Animal::operator=( Animal const & rhs )
 {
 	if ( this != &rhs )
@@ -40,6 +59,12 @@ Animal &				Animal::operator=( Animal const & rhs )
 	return *this;
 }
 
+/**
+ * @brief print the type of animal
+ * @param o -> output stream
+ * @param i -> parameter to print
+ * @return std::ostream& 
+ */
 std::ostream &			operator<<( std::ostream & o, Animal const & i )
 {
 	o << "Animal = " << i.getType() << std::endl;
@@ -51,11 +76,18 @@ std::ostream &			operator<<( std::ostream & o, Animal const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+/**
+ * @brief returns the animal types
+ * @return std::string 
+ */
 std::string Animal::getType() const
 {
 	return this->type;
 }
 
+/**
+ * @brief makes a sound of the animal
+ */
 void Animal::makeSound() const
 {
 	std::cout << "This animal doesn't make sound" << std::endl;

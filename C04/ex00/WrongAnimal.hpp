@@ -4,6 +4,10 @@
 # include <iostream>
 # include <string>
 
+/**
+ * @brief Wrong because they are not virtual classes
+ * 
+ */
 class WrongAnimal
 {
 

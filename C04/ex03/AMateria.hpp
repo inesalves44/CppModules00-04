@@ -23,6 +23,8 @@ class AMateria
 		AMateria &		operator=( AMateria const & rhs );
 
 		std::string const & GetType() const;
+
+		//purely virtual class
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target) = 0;
 

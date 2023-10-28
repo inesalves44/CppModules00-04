@@ -59,11 +59,18 @@ void Cat::makeSound() const
 	std::cout << "Cat: miau miau" << std::endl;
 }
 
+/**
+ * @brief this functions calls a function of the brain object in each cat.
+ * @param string -> an idea to give to the cat 
+ */
 void Cat::giveIdeas(std::string string) const 
 {
 	this->brain->getIdea(string);
 }
 
+/**
+ * @brief prints all the cats ideas.
+ */
 void Cat::presentIdeas() const
 {
 	std::cout << *this->brain;
