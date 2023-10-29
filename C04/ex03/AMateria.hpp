@@ -10,6 +10,9 @@
 
 class ICharacter;
 
+/**
+ * Class Materia that is purely virtual 
+ */
 class AMateria
 {
 

@@ -6,19 +6,16 @@
 
 AMateria::AMateria()
 {
-	std::cout << "Default constructor AMateria" << std::endl;
 }
 
 AMateria::AMateria( const AMateria & src )
 {
 	this->type = src.type;
-	std::cout << "Copy Constructor AMateria" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type)
 {
 	this->type = type;
-	std::cout << "Constructor with type AMateria" << std::endl;
 }
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -26,7 +23,6 @@ AMateria::AMateria(std::string const & type)
 
 AMateria::~AMateria()
 {
-	std::cout << "Destructor AMateria" << std::endl;
 }
 
 
@@ -34,13 +30,19 @@ AMateria::~AMateria()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
+/**
+ * AMateria 
+ * 
+ * @param  {AMateria} const : 
+ * @return {AMateria}       : 
+ */
 AMateria &				AMateria::operator=( AMateria const & rhs )
 {
 	if ( this != &rhs )
 	{
 		this->type = rhs.GetType();
 	}
-	std::cout << "=operator" << std::endl;
+	
 	return *this;
 }
 

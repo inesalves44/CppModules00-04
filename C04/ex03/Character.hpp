@@ -7,6 +7,14 @@
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
 
+#ifndef INVENTORY
+	#define INVENTORY 4
+#endif
+
+#ifndef FLOOR
+	#define FLOOR 100
+#endif
+
 class Character : public ICharacter
 {
 
@@ -25,10 +33,10 @@ class Character : public ICharacter
 
 	private:
 		std::string name;
-		AMateria *inventory[4];
-		AMateria *floor[100];
+		AMateria *inventory[INVENTORY];
+		AMateria *floor[FLOOR];
 };
 
-std::ostream &			operator<<( std::ostream & o, Character const & i );
+//std::ostream &			operator<<( std::ostream & o, Character const & i );
 
 #endif /* ******************************************************* CHARACTER_H */

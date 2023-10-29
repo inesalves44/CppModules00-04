@@ -7,6 +7,7 @@ int main(void)
 {
     Animal* test[10];
 
+    std::cout << "*******ARRAY: TEST*********" << std::endl; 
     for (size_t i = 0; i < 10; i++)
     {
         if (i % 2 == 0)
@@ -34,38 +35,27 @@ int main(void)
         std::cout << *test[i];
         test[i]->presentIdeas();
     }
-    
+
     for (size_t i = 0; i < 10; i++)
-    {
         delete test[i];
-    }
+
+    std::cout << std::endl << "**********Copy Tests: Dog and Cat **************" << std::endl;
+    const Dog* cao = new Dog();
+    const Cat* gato = new Cat();
     
+    cao->giveIdeas("HIIIIII");
+    gato->giveIdeas("FOOD");
+
+    Dog* cao2 = new Dog(*cao);
+    Cat* gato2 = new Cat(*gato);
+
+    cao2->presentIdeas();
+    gato2->presentIdeas();
+
+    delete cao;
+    delete cao2;
+    delete gato;
+    delete gato2;
+
     return 0;
 }
-
-/*std::cout << "-----------------------------Good Classes---------------------------" << std::endl;
-    const Animal* bobby = new Dog();
-    const Animal* jynx = new Cat();
-
-    std::cout << "---------------------------------" << std::endl;
-    bobby->makeSound();
-    jynx->makeSound();
-
-    std::cout << "---------------------------------" << std::endl;
-    bobby->giveIdeas("give me food");
-    bobby->giveIdeas("You are amazing I love you!");
-    jynx->giveIdeas("Why is there no food??");
-    jynx->giveIdeas("Play with me!!");
-
-    std::cout << "---------------------------------" << std::endl;
-    std::cout << "Bobby the dog ideas: " << std::endl;
-    bobby->presentIdeas();
-    std::cout << "Jynx the cat ideas: " << std::endl;
-    jynx->presentIdeas();
-
-    std::cout << "---------------------------------" << std::endl;
-    std::cout << bobby->getType() << std::endl;
-    std::cout << jynx->getType() << std::endl;
-
-    delete bobby;
-    delete jynx;*/

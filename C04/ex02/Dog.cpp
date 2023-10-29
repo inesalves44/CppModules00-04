@@ -11,9 +11,9 @@ Dog::Dog()
 	std::cout << "Default dog constructor" << std::endl;
 }
 
-Dog::Dog( const Dog & src )
+Dog::Dog( const Dog & src ): Animal(src)
 {
-	this->type = src.type;
+	this->brain = new Brain(*src.brain);
 	std::cout << "Dog copy constructor" << std::endl;
 }
 
@@ -38,6 +38,7 @@ Dog &				Dog::operator=( Dog const & rhs )
 	if ( this != &rhs )
 	{
 		this->type = rhs.getType();
+		this->brain = rhs.brain;
 	}
 	return *this;
 }

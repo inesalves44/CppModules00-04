@@ -11,10 +11,9 @@ Cat::Cat()
 	std::cout << "Default cat constructor" << std::endl;
 }
 
-Cat::Cat( const Cat & src )
+Cat::Cat( const Cat & src ) : Animal(src)
 {
-	this->type = src.type;
-	this->brain = src.brain;
+	this->brain = new Brain(*src.brain);
 	std::cout << "Default cat constructor" << std::endl;
 }
 
@@ -39,6 +38,7 @@ Cat &				Cat::operator=( Cat const & rhs )
 	if ( this != &rhs )
 	{
 		this->type = rhs.getType();
+		this->brain = rhs.brain;
 	}
 	return *this;
 }

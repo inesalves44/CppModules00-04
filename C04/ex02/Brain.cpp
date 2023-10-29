@@ -12,9 +12,11 @@ Brain::Brain()
 
 Brain::Brain( const Brain & src )
 {
+	this->numIdeas = 0;
 	for (size_t i = 0; i < src.getIdeasNumber(); i++)
 	{
-		this->ideas[i] = src.ideas[i];
+		this->ideas[i] = src.getIdeaValue(i);
+		this->numIdeas++;
 	}
 	
 	std::cout << "Copy Constructor for brain" << std::endl;
@@ -39,9 +41,11 @@ Brain &				Brain::operator=( Brain const & rhs )
 {
 	if ( this != &rhs )
 	{
+		this->numIdeas = 0;
 		for (size_t i = 0; i < this->ideas->size(); i++)
 		{
 			this->ideas[i] = rhs.ideas[i];
+			this->numIdeas++;
 		}
 	}
 	return *this;
@@ -75,12 +79,13 @@ std::string Brain::getIdeaValue(int i) const
 
 void	Brain::getIdea(std::string idea)
 {
-	int i = 0;
-	
-	while (i < this->numIdeas)
-		i++;
-	
-	ideas[i] = idea;
+	if (this->numIdeas >= 100)
+	{
+		std::cout << "Can't have more ideas" << std::endl;
+		return ;
+	}
+
+	ideas[this->numIdeas] = idea;
 	this->numIdeas++;
 }
 /*

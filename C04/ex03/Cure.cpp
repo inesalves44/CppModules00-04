@@ -6,13 +6,11 @@
 
 Cure::Cure() : AMateria("cure")
 {
-	std::cout << "Constructor cure" << std::endl;
 }
 
 Cure::Cure( const Cure & src )
 {
 	this->type = src.type;
-	std::cout << "Copy Constructor cure" << std::endl;
 }
 
 
@@ -22,7 +20,7 @@ Cure::Cure( const Cure & src )
 
 Cure::~Cure()
 {
-	std::cout << "Destructor cure" << std::endl;
+
 }
 
 
@@ -39,7 +37,11 @@ Cure &				Cure::operator=( Cure const & rhs )
 	return *this;
 }
 
-
+std::ostream &			operator<<( std::ostream & o, Cure const & i )
+{
+	o << "Value = " << i.GetType();
+	return o;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -58,7 +60,6 @@ AMateria* Cure::clone() const
 
 /**
  * @brief THIS IS THE OBJECTIVE OF CURE MATERIA
- * 
  * @param target 
  */
 void Cure::use(ICharacter& target)

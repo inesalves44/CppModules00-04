@@ -8,28 +8,40 @@ Character::Character()
 {
 	this->name = "TEST";
 	
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < INVENTORY; i++)
 		this->inventory[i] = NULL;
 	
-	for (size_t i = 0; i < 100; i++)
+	for (size_t i = 0; i < FLOOR; i++)
 		this->floor[i] = NULL;
 	
 }
 
+/**
+ * Character::Character 
+ * Constructor for Character, it receives the name and initializes 
+ * floor and inventory as null
+ * @param  {std::string} const : 
+ */
 Character::Character(std::string const name)
 {
 	this->name = name;
 	
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < INVENTORY; i++)
 		this->inventory[i] = NULL;
 	
-	for (size_t i = 0; i < 100; i++)
+	for (size_t i = 0; i < FLOOR; i++)
 		this->floor[i] = NULL;
 }
 
 Character::Character( const Character & src )
 {
-	*this = src;
+	this->name = src.name;
+
+	for(int i = 0; i < INVENTORY; i++)
+		this->inventory[i] = src.inventory[i];
+
+	for(int i = 0; i < FLOOR; i++)
+		this->floor[i] = src.floor[i];
 }
 
 
@@ -56,27 +68,16 @@ Character &				Character::operator=( Character const & rhs )
 	if ( this != &rhs )
 	{
 		this->name = rhs.getName();
-		for (size_t i = 0; i < 4; i++)
+		for (size_t i = 0; i < INVENTORY; i++)
 			this->inventory[i] = rhs.inventory[i];
 		
-		for (size_t i = 0; i < 100; i++)
+		for (size_t i = 0; i < FLOOR; i++)
 			this->floor[i] = rhs.floor[i];
 		
 	}
 	return *this;
 }
 
-/*std::ostream &			operator<<( std::ostream & o, Character const & i )
-{
-	o << "Name = " << i.getName();
-	for (size_t i = 0; this->inventory[i] != NULL; i++)
-	{
-		
-	}
-	
-	return o;
-}
-*/
 
 
 /*
@@ -95,7 +96,7 @@ void Character::equip(AMateria* m)
 	while (this->inventory[i] != NULL)
 		i++;
 	
-	if (i == 4)
+	if (i == INVENTORY)
 	{
 		std::cout << "Character is full the Materia is on the floor" << std::endl;
 		while (this->floor[j] != NULL)
@@ -111,7 +112,7 @@ void Character::equip(AMateria* m)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx >= 4)
+	if (idx < 0 || idx >= INVENTORY)
 	{
 		std::cout << "index invalid!" << std::endl;
 		return ;
@@ -127,7 +128,7 @@ void Character::unequip(int idx)
 {
 	int j = 0;
 
-	if (idx < 0 || idx >= 4)
+	if ((idx < 0 || idx >= INVENTORY) && this->inventory[idx] != NULL)
 	{
 		std::cout << "index invalid!" << std::endl;
 		return ;

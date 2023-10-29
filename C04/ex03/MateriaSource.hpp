@@ -6,6 +6,10 @@
 
 # include "IMateriaSource.hpp"
 
+#ifndef NEW_INVENTORY
+	#define NEW_INVENTORY 4
+#endif
+
 class MateriaSource : public IMateriaSource
 {
 
@@ -21,9 +25,8 @@ class MateriaSource : public IMateriaSource
 		AMateria* createMateria(std::string const & type);
 
 	private:
-		AMateria* materias[4];
+		AMateria* materias[NEW_INVENTORY];
 };
 
-std::ostream &			operator<<( std::ostream & o, MateriaSource const & i );
 
 #endif /* *************************************************** MATERIASOURCE_H */

@@ -12,7 +12,7 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource( const MateriaSource & src )
 {
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < NEW_INVENTORY; i++)
 		this->materias[i] = src.materias[i];
 }
 
@@ -37,18 +37,14 @@ MateriaSource::~MateriaSource()
 
 MateriaSource &				MateriaSource::operator=( MateriaSource const & rhs )
 {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
+	if ( this != &rhs )
+	{
+		for(int i = 0;  i < NEW_INVENTORY; i++)
+			this->materias[i] = rhs.materias[i];
+	}
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, MateriaSource const & i )
-{
-	//o << "Value = " << i.getValue();
-	return o;
-}
 
 
 /*

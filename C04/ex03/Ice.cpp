@@ -6,13 +6,11 @@
 
 Ice::Ice() : AMateria("ice")
 {
-	std::cout << "Constructor Ice" << std::endl;
 }
 
 Ice::Ice( const Ice & src )
 {
 	this->type = src.type;
-	std::cout << "Copy constructor Ice" << std::endl;
 }
 
 
@@ -22,7 +20,6 @@ Ice::Ice( const Ice & src )
 
 Ice::~Ice()
 {
-	std::cout << "Destructor ice" << std::endl;
 }
 
 
@@ -34,13 +31,17 @@ Ice &				Ice::operator=( Ice const & rhs )
 {
 	if ( this != &rhs )
 	{
-		*this = rhs;
+		this->type = rhs.type;
 	}
 	return *this;
 }
 
 
-
+std::ostream &			operator<<( std::ostream & o, Ice const & i )
+{
+	o << "Value = " << i.GetType() << std::endl;
+	return o;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
