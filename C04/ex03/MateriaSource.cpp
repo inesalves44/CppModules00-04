@@ -58,7 +58,7 @@ void MateriaSource::learnMateria(AMateria* test)
 	while (this->materias[i] != NULL)
 		i++;
 	
-	if(i > 4)
+	if(i == 4)
 	{
 		std::cout << "No space to copy " << std::endl;
 		return ;

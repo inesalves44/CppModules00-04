@@ -51,11 +51,11 @@ Character::Character( const Character & src )
 
 Character::~Character()
 {
-	for (size_t i = 0; this->inventory[i] != NULL; i++)
+	/*for (size_t i = 0;  i < INVENTORY; i++)
 		delete this->inventory[i];
 	
-	for (size_t i = 0; this->floor[i] != NULL ; i++)
-		delete this->floor[i];
+	for (size_t i = 0; i < FLOOR; i++)
+		delete this->floor[i];*/
 }
 
 
@@ -128,7 +128,7 @@ void Character::unequip(int idx)
 {
 	int j = 0;
 
-	if ((idx < 0 || idx >= INVENTORY) && this->inventory[idx] != NULL)
+	if (idx < 0 || idx >= INVENTORY || this->inventory[idx] == NULL)
 	{
 		std::cout << "index invalid!" << std::endl;
 		return ;
@@ -140,7 +140,7 @@ void Character::unequip(int idx)
 	this->floor[j] = this->inventory[idx];
 	this->inventory[idx] = NULL;
 
-	std::cout << "The Materia on index " << idx <<  "is on the floor" << std::endl;
+	std::cout << "The Materia on index " << idx <<  " is on the floor" << std::endl;
 }
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

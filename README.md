@@ -2,4 +2,4 @@
 
 C04:
 
--> fazer mais testes para ex03
+-> memmpry leaks
