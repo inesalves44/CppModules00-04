@@ -9,7 +9,7 @@ class PhoneBooks
 {
     private:
         Contacts _phoneBook[8];
-        int _phoneBookLength = 0;
+        int _phoneBookLength;
         void _addContact();
         bool _searchContact();
         void _deleteContact();

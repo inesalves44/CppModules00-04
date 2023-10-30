@@ -28,7 +28,7 @@ void Zombie::Announce(void)
 }
 
 /**
- * @brief THis function nams an already created zombie.
+ * @brief THis function name's an already created zombie.
  * @param name the name of the zombie
  */
 void Zombie::NameZombie(std::string name)

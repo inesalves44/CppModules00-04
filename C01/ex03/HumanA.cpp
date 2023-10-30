@@ -1,7 +1,7 @@
 #include "HumanA.h"
 
 /**
- * @brief Construct a new Human A:: Human A object
+ * @brief Construct a new HumanA:: Human A object
  * using an initializer list because you need for the reference weapon
  * @param name -> name of the human
  * @param newWeapon -> type of the weapon

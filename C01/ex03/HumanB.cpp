@@ -1,7 +1,7 @@
 #include "HumanB.h"
 
 /**
- * @brief Construct a new Human B:: Human B object
+ * @brief Construct a new HumanB:: Human B object
  * initializer list for the properties
  * @param name -> of the human
  */

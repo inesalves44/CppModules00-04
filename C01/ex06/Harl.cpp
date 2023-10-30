@@ -39,7 +39,6 @@ void Harl::error(void)
 
 /**
  * @brief this function filters the Harl complaints with a switch
- * 
  * @param statement 
  */
 void    Harl::filter(std::string statement)

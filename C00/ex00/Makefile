@@ -13,7 +13,7 @@
 OBJS  =  megaphone.o
 NAME = megaphone
 CC = c++
-CFLAGS = -g -Wextra -Werror -Wall -std=c++98
+CFLAGS = -Wextra -Werror -Wall -pedantic  -std=c++98
 GREEN           :=      \033[0;32m
 RED             :=      \033[1;31m
 WHITE           :=      \033[1;37m

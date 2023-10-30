@@ -13,7 +13,11 @@ int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
 
-
+/**
+ * @brief Construct a new Account:: Account object
+ * Constructs the deposit and the display based on the initial deposit
+ * @param initial_deposit 
+ */
 Account::Account( int initial_deposit )
 {
 	this->_accountIndex = Account::_nbAccounts;
@@ -31,6 +35,9 @@ Account::Account( int initial_deposit )
 	this->_nbWithdrawals = 0;
 }
 
+/**
+ * @brief just displays the totalaccount value
+ */
 void	Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
@@ -40,6 +47,9 @@ void	Account::displayAccountsInfos( void )
 	<< ";withdrawals:" << getNbWithdrawals() << "\n";
 }
 
+/**
+ * @brief idsplays the status for an index account
+ */
 void	Account::displayStatus( void ) const
 {
 	_displayTimestamp();
@@ -50,6 +60,10 @@ void	Account::displayStatus( void ) const
 	<<"\n";
 }
 
+/**
+ * @brief makes a deposit and adds to the deposit
+ * @param deposit -> quantity
+ */
 void	Account::makeDeposit( int deposit )
 {
 	_displayTimestamp();
@@ -57,7 +71,7 @@ void	Account::makeDeposit( int deposit )
 	<< ";p_amount:" << checkAmount()
 	<< ";deposit:" << deposit;
 	this->_amount += deposit;
-	this-_nbDeposits++;
+	this->_nbDeposits++;
 	std::cout << ";amount:" << checkAmount()
 	<<";nb_deposits:"<< this->_nbDeposits << "\n";
 
@@ -65,6 +79,14 @@ void	Account::makeDeposit( int deposit )
 	_totalNbDeposits++;
 }
 
+/**
+ * @brief takes a withdrawal
+ * if the withdrawal is bigger than the amount it returns false.
+ * else it returns true
+ * @param withdrawal 
+ * @return true 
+ * @return false 
+ */
 bool	Account::makeWithdrawal( int withdrawal )
 {
 	_displayTimestamp();
@@ -90,11 +112,18 @@ bool	Account::makeWithdrawal( int withdrawal )
 	return true;
 }
 
+/**
+ * @brief checks ammount
+ * @return int 
+ */
 int		Account::checkAmount( void ) const
 {
 	return this->_amount;
 }
 
+/**
+ * @brief displays the timestamp
+ */
 void	Account::_displayTimestamp( void )
 {
 	time_t now = time(0);
@@ -134,7 +163,7 @@ int	Account::getNbDeposits( void )
 	return Account::_totalNbDeposits;
 }
 
- int	Account::getNbWithdrawals( void )
+int	Account::getNbWithdrawals( void )
 {
 	return Account::_totalNbWithdrawals;
 }

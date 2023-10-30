@@ -58,7 +58,7 @@ bool PhoneBooks::_searchContact()
 		return false;
 	}
 
-	cout << "\033[1;34m-------------------Here are Your Contacts--------------------------------------------\n\n";
+	cout << "\033[1;34m-------------------Here are Your Contacts---------------------------------------\n\n";
 	
 	_printContacts();
 
@@ -89,19 +89,19 @@ void PhoneBooks::_phoneBookMenu()
 {
 	std::string answer;
 	
-	cout << "\033[0;36m\033[1;1m-------------------Welcome To The AwesomePhone Book-----------------------------------\033[1;37m\n\n";
+	cout << "\033[0;36m\033[1;1m-------------------Welcome To The AwesomePhone Book-----------------------\033[1;37m\n\n";
 	
 	do
 	{
 		cout << "\033[4;37mChoose an Option:\n\033[0;37m\n";
-		cout << "1-Add\n";
-		cout << "2-Search\n";
-		cout << "3-Exit\n";
+		cout << "1-ADD\n";
+		cout << "2-SEARCH\n";
+		cout << "3-EXIT\n";
 		
 		cin >> answer;
 		
 		for (size_t i = 0; i < answer.length(); i++)
-			towlower(answer[i]);
+			answer[i] = towlower(answer[i]);
 		
 		if (answer == "1" || answer == "add")
 			_addContact();
@@ -124,5 +124,6 @@ void PhoneBooks::_phoneBookMenu()
  */
 PhoneBooks::PhoneBooks()
 {
+	this->_phoneBookLength = 0;
 	_phoneBookMenu();
 }

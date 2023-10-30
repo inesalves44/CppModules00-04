@@ -14,22 +14,20 @@
 #include <iostream>
 #include <cstring>
 
-/**
- * @brief creates the zombie horde calling the zombie horde function.
- * Also announces the zombies. In the end they are deleted.
- */
 int	main()
 {
 	std::string test = "HI THIS IS BRAIN";
-
 	std::string *stringPTR = &test;
-
 	std::string &stringREF = test;
+
+
+	std::cout << "ADDRESS OF STRING" << std::endl;
 
 	std::cout << &test << "\n";
 	std::cout << stringPTR << "\n";
 	std::cout << &stringREF << "\n\n";
 
+	std::cout << "VALUE OF STRING" << std::endl;
 	std::cout << test << "\n";
 	std::cout << *stringPTR << "\n";
 	std::cout << stringREF << "\n";

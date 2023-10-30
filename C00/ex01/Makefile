@@ -11,10 +11,10 @@
 # **************************************************************************** #
 
 
-OBJS  =  AwesomePhoneBook.o Contacts.o PhoneBook.o
+OBJS  =  main.o Contacts.o PhoneBook.o
 NAME = awesomePhoneBook
 CC = c++
-FLAGS = -Wextra -Werror -Wall -std=c++98 -DCMAKE_BUILD_TYPE=Debug
+FLAGS = -Wextra -Werror -Wall -pedantic -std=c++98
 GREEN           :=      \033[1;32m
 WHITE           :=      \033[0;37m
 CYAN            :=      \033[1;36m
