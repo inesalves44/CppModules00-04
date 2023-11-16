@@ -22,7 +22,7 @@ void PhoneBooks::_addContact()
 	if (this->_phoneBookLength < 8)
 		this->_phoneBookLength++;
 	this->_phoneBook[this->_phoneBookLength - 1].addContact();
-	cout << "\n\033[1;32m\033[1;1mContact added!\n\n";
+	std::cout << "\n\033[1;32m\033[1;1mContact added!\n\n";
 }
 
 /**
@@ -30,16 +30,16 @@ void PhoneBooks::_addContact()
  */
 void PhoneBooks::_printContacts()
 {
-	cout << "\033[1;37mIndex |";
-	cout << "First Name|";
-	cout << "Last Name |";
-	cout << "NickName\n";
+	std::cout << "\033[1;37mIndex |";
+	std::cout << "First Name|";
+	std::cout << "Last Name |";
+	std::cout << "NickName\n";
 
 	for (size_t i = 0; i < _phoneBookLength; i++)
 	{
-		cout << "\033[0;37m";
+		std::cout << "\033[0;37m";
 		_phoneBook[i].printContact(i);
-		cout << "\n";
+		std::cout << "\n";
 	}
 }
 
@@ -50,35 +50,35 @@ void PhoneBooks::_printContacts()
 bool PhoneBooks::_searchContact()
 {
 	int input;
-	string index;
+	std::string index;
 
 	if (_phoneBookLength == 0)
 	{
-		cout << "\033[0;31mNo contacts to search\033[0;37m\n";
+		std::cout << "\033[0;31mNo contacts to search\033[0;37m\n";
 		return false;
 	}
 
-	cout << "\033[1;34m-------------------Here are Your Contacts---------------------------------------\n\n";
+	std::cout << "\033[1;34m-------------------Here are Your Contacts---------------------------------------\n\n";
 	
 	_printContacts();
 
 	do
 	{
-		cout << "\n";
-		cout << "What is the Contact you are looking for: ";
-		cin >> index;
-		cout << "\n";
+		std::cout << "\n";
+		std::cout << "What is the Contact you are looking for: ";
+		std::cin >> index;
+		std::cout << "\n";
 
 		input = stoi(index) - 1;
 
 		if (input < 0 || input >= this->_phoneBookLength)
-			cout << "\033[0;31mNot a valid Contact\033[0;37m\n";
+			std::cout << "\033[0;31mNot a valid Contact\033[0;37m\n";
 
 	} while (input < 0 || input >= this->_phoneBookLength);
 	
 
 	_phoneBook[input].displayContact();
-	cout << "\033[0;37m\n\n";
+	std::cout << "\033[0;37m\n\n";
 	return true;
 }
 
@@ -89,16 +89,16 @@ void PhoneBooks::_phoneBookMenu()
 {
 	std::string answer;
 	
-	cout << "\033[0;36m\033[1;1m-------------------Welcome To The AwesomePhone Book-----------------------\033[1;37m\n\n";
+	std::cout << "\033[0;36m\033[1;1m-------------------Welcome To The AwesomePhone Book-----------------------\033[1;37m\n\n";
 	
 	do
 	{
-		cout << "\033[4;37mChoose an Option:\n\033[0;37m\n";
-		cout << "1-ADD\n";
-		cout << "2-SEARCH\n";
-		cout << "3-EXIT\n";
+		std::cout << "\033[4;37mChoose an Option:\n\033[0;37m\n";
+		std::cout << "1-ADD\n";
+		std::cout << "2-SEARCH\n";
+		std::cout << "3-EXIT\n";
 		
-		cin >> answer;
+		std::cin >> answer;
 		
 		for (size_t i = 0; i < answer.length(); i++)
 			answer[i] = towlower(answer[i]);
@@ -109,11 +109,11 @@ void PhoneBooks::_phoneBookMenu()
 			_searchContact();
 		else if (answer == "3" || answer == "exit")
 		{
-			cout << "\033[1;35mThank you so much for using our PhoneBook!\033[1;37m\n";
+			std::cout << "\033[1;35mThank you so much for using our PhoneBook!\033[1;37m\n";
 			continue;
 		}
 		else
-			cout << "\033[0;31mNot an option! Sorry!\n\033[1;37m\n";
+			std::cout << "\033[0;31mNot an option! Sorry!\n\033[1;37m\n";
 
 	} while (answer != "3" && answer != "exit");
 	
