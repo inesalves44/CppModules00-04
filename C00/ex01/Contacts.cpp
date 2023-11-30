@@ -9,7 +9,9 @@ void Contacts::_addFirstName()
 	do
 	{
 		std::cout << "\033[0;33mFirst Name: \033[0;37m";
-		std::cin >> this->_firstName;
+		std::getline(std::cin, this->_firstName);
+		if (std::cin.eof())
+			break ;
 	} while (this->_firstName == "");
 }
 
@@ -18,7 +20,9 @@ void Contacts::_addLastName()
 	do
 	{
 		std::cout << "\033[0;33mLast Name: \033[0;37m";
-		std::cin >> this->_lastName;
+		std::getline(std::cin, this->_lastName);
+		if (std::cin.eof())
+			break ;
 	} while (this->_lastName == "");
 }
 
@@ -27,7 +31,9 @@ void Contacts::_addNickName()
 	do
 	{
 		std::cout << "\033[0;33mNickName: \033[0;37m";
-		std::cin >> this->_nickName;
+		std::getline(std::cin, this->_nickName);
+		if (std::cin.eof())
+			break ;
 	} while (this->_nickName == "");
 }
 
@@ -36,7 +42,9 @@ void Contacts::_addDarkSecret()
 	do
 	{
 		std::cout << "\033[0;33mDark Secret: \033[0;37m";
-		std::cin >> this->_darkSecret;
+		std::getline(std::cin, this->_darkSecret);
+		if (std::cin.eof())
+			break ;
 	} while (this->_darkSecret == "");
 }
 
@@ -45,8 +53,11 @@ void Contacts::_addPhoneNumber()
 	do
 	{
 		std::cout << "\033[0;33mPhone Number: \033[0;37m";
-		std::cin >> this->_phoneNumber;
+		std::getline(std::cin, this->_phoneNumber);
 		
+		if (std::cin.eof())
+			break ;
+
 		if (this->_phoneNumber.length() > 15 || this->_phoneNumber.length() < 7)
 		{
 			std::cout << "\033[0;31mPhone Number isn't the correct length\033[0;37m\n\n";
@@ -58,9 +69,14 @@ void Contacts::_addPhoneNumber()
 		{
 			if (this->_phoneNumber[i] < '0' || this->_phoneNumber[i] > '9')
 			{
-				std::cout << "\033[0;31mPhone Number is only digits\033[0;37m\n\n";
-				this->_phoneNumber = "";
-				break ;
+				if (i == 0 && this->_phoneNumber[i] == '+')
+					;
+				else
+				{
+					std::cout << "\033[0;31mPhone Number is only digits\033[0;37m\n\n";
+					this->_phoneNumber = "";
+					break ;
+				}
 			}
 		}
 	} while (this->_phoneNumber == "");
@@ -71,13 +87,21 @@ void Contacts::_addPhoneNumber()
 /**
  * @brief This function is called to create a new contact and give it it's parametrs.
  */
-void Contacts::addContact()
+int Contacts::addContact()
 {
 	_addFirstName();
-	_addLastName();
-	_addPhoneNumber();
-	_addNickName();
-	_addDarkSecret();
+	if (this->_firstName != "")
+		_addLastName();
+	if (this->_lastName != "")
+		_addPhoneNumber();
+	if (this->_phoneNumber != "")
+		_addNickName();
+	if (this->_nickName != "")
+		_addDarkSecret();
+	if (this->_darkSecret == "" || this->_firstName == "" || this->_lastName == "" \
+	|| this->_phoneNumber == "" || this->_nickName == "")
+		return (1);
+	return 0;
 }
 
 /**

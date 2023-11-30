@@ -14,15 +14,24 @@ void PhoneBooks::_deleteContact()
  * @brief Checks if the phonebook has 8 contacts. If so it deletes the first one.
  * Then it adds a contact.
  */
-void PhoneBooks::_addContact()
+int PhoneBooks::_addContact()
 {
 	if (this->_phoneBookLength == 8)
+	{
 		_deleteContact();
+		this->_phoneBookLength--;
+	}
+
+	if (this->_phoneBook[this->_phoneBookLength].addContact())
+	{
+		std::cout << "\033[0;31mError!\n\033[1;37m\n";
+		return (1);
+	}
 
 	if (this->_phoneBookLength < 8)
 		this->_phoneBookLength++;
-	this->_phoneBook[this->_phoneBookLength - 1].addContact();
 	std::cout << "\n\033[1;32m\033[1;1mContact added!\n\n";
+	return (0);
 }
 
 /**
@@ -55,7 +64,7 @@ bool PhoneBooks::_searchContact()
 	if (_phoneBookLength == 0)
 	{
 		std::cout << "\033[0;31mNo contacts to search\033[0;37m\n";
-		return false;
+		return true;
 	}
 
 	std::cout << "\033[1;34m-------------------Here are Your Contacts---------------------------------------\n\n";
@@ -66,10 +75,18 @@ bool PhoneBooks::_searchContact()
 	{
 		std::cout << "\n";
 		std::cout << "What is the Contact you are looking for: ";
-		std::cin >> index;
+		std::getline(std::cin, index);
 		std::cout << "\n";
 
-		input = stoi(index) - 1;
+		if (std::cin.eof())
+		{
+			std::cout << "\033[0;31mError!\n\033[1;37m\n";
+			return false;
+		}
+		if (index.find_first_not_of("0123456789") == std::string::npos)
+			input = stoi(index) - 1;
+		else
+			input = -1;
 
 		if (input < 0 || input >= this->_phoneBookLength)
 			std::cout << "\033[0;31mNot a valid Contact\033[0;37m\n";
@@ -98,15 +115,28 @@ void PhoneBooks::_phoneBookMenu()
 		std::cout << "2-SEARCH\n";
 		std::cout << "3-EXIT\n";
 		
-		std::cin >> answer;
+		std::getline(std::cin, answer);
 		
+		if (std::cin.eof())
+			answer = "exit";
+
 		for (size_t i = 0; i < answer.length(); i++)
 			answer[i] = towlower(answer[i]);
 		
 		if (answer == "1" || answer == "add")
-			_addContact();
+		{
+			if (_addContact())
+				break ;
+			else
+				continue ;
+		}
 		else if (answer == "2" || answer == "search")
-			_searchContact();
+		{
+			if (!_searchContact())
+				break ;
+			else
+				continue ;
+		}
 		else if (answer == "3" || answer == "exit")
 		{
 			std::cout << "\033[1;35mThank you so much for using our PhoneBook!\033[1;37m\n";
@@ -115,8 +145,7 @@ void PhoneBooks::_phoneBookMenu()
 		else
 			std::cout << "\033[0;31mNot an option! Sorry!\n\033[1;37m\n";
 
-	} while (answer != "3" && answer != "exit");
-	
+	} while (answer != "3" && answer != "exit");	
 }
 
 /**

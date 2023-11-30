@@ -24,7 +24,7 @@ class Contacts
 		void _printElement(std::string element);
 
     public:
-        void addContact();
+        int addContact();
         void printContact(int index);
 		void displayContact();
 };

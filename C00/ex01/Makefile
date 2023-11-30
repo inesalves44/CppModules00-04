@@ -6,7 +6,7 @@
 #    By: idias-al <idias-al@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/03 15:57:56 by idias-al          #+#    #+#              #
-#    Updated: 2023/08/14 16:47:02 by idias-al         ###   ########.fr        #
+#    Updated: 2023/11/30 15:28:31 by idias-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 OBJS  =  main.o Contacts.o PhoneBook.o
 NAME = awesomePhoneBook
 CC = c++
-FLAGS = -Wextra -Werror -Wall -pedantic -std=c++98
+FLAGS = -Wextra -Werror -Wall -g -pedantic -std=c++98
 GREEN           :=      \033[1;32m
 WHITE           :=      \033[0;37m
 CYAN            :=      \033[1;36m
