@@ -12,7 +12,7 @@ This project introduces object-oriented programming, namely c++.
 | CPP03 | Inheritance |
 | CPP04 | Polymorphism, Abstract Classes and Interfaces |
 
-## 2. Different Functions
+## 2. Examples and explanations
 
 ### 2.1 Dynamic allocation and static allocation
 
@@ -68,4 +68,75 @@ Orthodox cannonical form is a way to write a c++ class that have the following c
 
 Inheritance is a fundamental concept in object-oriented programming (OOP), and it allows a class to inherit properties and behaviors from another class. In C++, the language supports both single and multiple inheritance.
 
+A class can inheritance from one class or multiple classes. 
+
+Example:
+
+```
+#include <iostream>
+
+// Base classes
+class Shape {
+public:
+    void draw() {
+        std::cout << "Drawing a shape." << std::endl;
+    }
+};
+
+class Color {
+public:
+    void fill() {
+        std::cout << "Filling with color." << std::endl;
+    }
+};
+
+// Derived class inheriting from both Shape and Color
+class ColoredShape : public Shape, public Color {
+public:
+    // Inherits draw() from Shape and fill() from Color
+    void drawColoredShape() {
+        std::cout << "Drawing a colored shape." << std::endl;
+    }
+};
+
+int main() {
+    ColoredShape coloredShape;
+    coloredShape.draw();            // Inherited from Shape
+    coloredShape.fill();            // Inherited from Color
+    coloredShape.drawColoredShape(); // Specific to ColoredShape
+
+    return 0;
+}
+```
+
+### 2.5 Polymorphism
+
+Polymorphism is a key concept in object-oriented programming (OOP) and refers to the ability of different classes to be treated as objects of a common base class. 
+
+```
+#include <iostream>
+
+class Calculator {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+};
+
+int main() {
+    Calculator calculator;
+    std::cout << calculator.add(5, 7) << std::endl;        // Calls int version
+    std::cout << calculator.add(3.5, 2.8) << std::endl;    // Calls double version
+
+    return 0;
+}
+```
+
+## Abstract and Interfaces
+
+In C++, an abstract class is a class that cannot be instantiated on its own and is meant to serve as a base class for other classes. Abstract classes are used to define a common interface for a group of related classes, and they may contain one or more pure virtual functions.
 
