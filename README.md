@@ -136,7 +136,20 @@ int main() {
 }
 ```
 
-## Abstract and Interfaces
+### 2.6 Abstract and Interfaces
 
 In C++, an abstract class is a class that cannot be instantiated on its own and is meant to serve as a base class for other classes. Abstract classes are used to define a common interface for a group of related classes, and they may contain one or more pure virtual functions.
 
+## Links
+
+[Dynamic allocation](https://www.geeksforgeeks.org/new-and-delete-operators-in-cpp-for-dynamic-memory/)
+
+[Orthodox Canonical Class](https://www.francescmm.com/orthodox-canonical-class-form/)
+
+[Operator Overloading](https://www.geeksforgeeks.org/operator-overloading-cpp/)
+
+[Inheritance](https://www.geeksforgeeks.org/inheritance-in-c/)
+
+[Polymorphism](https://www.geeksforgeeks.org/cpp-polymorphism/)
+
+[Abstract and Interfaces](https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm)
