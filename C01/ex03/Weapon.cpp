@@ -8,6 +8,7 @@
 Weapon::Weapon(std::string newtype)
 {
     type = newtype;
+	std::cout << "Constructor for weapon\n";
 }
 
 /**
@@ -16,7 +17,7 @@ Weapon::Weapon(std::string newtype)
  */
 Weapon::Weapon()
 {
-    ;
+    std::cout << "Default constructor for weapon\n";
 }
 
 /**
@@ -43,4 +44,5 @@ void  Weapon::setType(std::string newtype)
  */
 Weapon::~Weapon()
 {
+	std::cout << "Destructor for weapon\n";
 }

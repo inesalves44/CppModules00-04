@@ -1,5 +1,11 @@
 #include "HumanB.h"
 
+
+HumanB::HumanB() : weapon(NULL)
+{
+    std::cout << "Default constructor for Human B\n";
+}
+
 /**
  * @brief Construct a new HumanB:: Human B object
  * initializer list for the properties
@@ -7,7 +13,7 @@
  */
 HumanB::HumanB(std::string name) : name(name), weapon(NULL)
 {
-    ;
+    std::cout << "Name constructor for Human B\n";;
 }
 
 /**
@@ -24,7 +30,12 @@ void HumanB::setWeapon(Weapon &newWeapon)
  */
 void HumanB::attack()
 {
-    std::cout << name << " attacks with their " << weapon->getType() << "\n";
+	if (!this->weapon)
+	{
+		std::cout << this->name << "does not have a weapon";
+		return;
+	}
+    std::cout << this->name << " attacks with their " << weapon->getType() << "\n";
 }
 
 /**
@@ -33,5 +44,5 @@ void HumanB::attack()
  */
 HumanB::~HumanB()
 {
-
+	std::cout << "Destructor for Human B\n";
 }

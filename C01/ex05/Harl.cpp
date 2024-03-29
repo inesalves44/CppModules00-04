@@ -2,7 +2,7 @@
 
 Harl::Harl()
 {
-
+	std::cout << "Harl enters the restaurant!\n" <<std::endl;
 }
 
 /**
@@ -11,22 +11,22 @@ Harl::Harl()
 #pragma region HarlMessages
 void Harl::debug(void)
 {
-    std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!";
+    std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!\n"<< std::endl;
 }
 
 void Harl::info(void)
 {
-    std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!";
+    std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!\n"<< std::endl;
 }
 
 void Harl::warning(void)
 {
-    std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month.";
+    std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month.\n"<< std::endl;
 }
 
 void Harl::error(void)
 {
-    std::cout << "This is unacceptable! I want to speak to the manager now.";
+    std::cout << "This is unacceptable! I want to speak to the manager now.\n"<< std::endl;
 }
 #pragma endregion
 
@@ -52,15 +52,14 @@ void Harl::complain(std::string level)
         if (level == levels[i])
         {
             (this->*ptr[i])();
-            std::cout << "\n";
             test = true;
         }
     }
     if (test == false)
-        std::cout << "Fantastic work thank you!";
+        std::cout << "Fantastic work thank you!\n"<< std::endl;
 }
 
 Harl::~Harl()
 {
-
+	std::cout << "Harl leaves the restaurant!" <<std::endl;
 }

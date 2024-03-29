@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idias-al <idias-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inesalves <inesalves@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:42:14 by idias-al          #+#    #+#             */
-/*   Updated: 2023/08/16 19:50:58 by idias-al         ###   ########.fr       */
+/*   Updated: 2024/03/29 19:02:29 by inesalves        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <cstring>
 
+// https://www.geeksforgeeks.org/pointers-and-references-in-c/
 int	main()
 {
 	std::string test = "HI THIS IS BRAIN";

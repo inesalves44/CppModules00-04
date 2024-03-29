@@ -49,9 +49,11 @@ void    Harl::filter(std::string statement)
     for (size_t i = 0; i < statement.length(); i++)
         statement[i] = (char)towupper(statement[i]);
 
-    for (size_t i = 0; i < 4; i++)
-        if (levels[i] == statement)
+    for (int i = 0; (i < 4) && (a == -1); i++)
+	{
+		if (levels[i] == statement)
             a = i + 1;
+	}
 
     switch (a)
     {

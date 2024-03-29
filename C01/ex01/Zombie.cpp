@@ -7,16 +7,16 @@
  */
 Zombie::Zombie()
 {
-	;
+	std::cout << "Zombie created" << std::endl;
 }
 
 /**
  * @brief constructor. Gives the zombie it's name
  * @name the name of the zombie
 */
-Zombie::Zombie(std::string name)
+Zombie::Zombie(std::string name) : name(name)
 {
-	this->name = name;
+	std::cout << "Zombie "<< this->name << "created" << std::endl;
 }
 
 /**
@@ -31,9 +31,10 @@ void Zombie::Announce(void)
  * @brief THis function name's an already created zombie.
  * @param name the name of the zombie
  */
-void Zombie::NameZombie(std::string name)
+void Zombie::SetNameZombie(std::string name)
 {
-	this->name = name; 
+	this->name = name;
+	std::cout << "Zombie was renamed to: " << this->name << "\n";
 }
 
 /**

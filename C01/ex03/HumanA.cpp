@@ -8,7 +8,7 @@
  */
 HumanA::HumanA(std::string name, Weapon &newWeapon) : name(name), weapon(newWeapon)
 {
-    ;
+    std::cout << "Constructor for Human A\n";
 }
 
 /**
@@ -16,10 +16,10 @@ HumanA::HumanA(std::string name, Weapon &newWeapon) : name(name), weapon(newWeap
  */
 void HumanA::attack()
 {
-    std::cout << this->name << " attacks with their " << this->weapon.getType() << "\n";
+    std::cout << this->name << " attacks with their " << this->weapon.getType() << std::endl;
 }
 
 HumanA::~HumanA()
 {
-    
+    std::cout << "Destructor for Human A\n";
 }

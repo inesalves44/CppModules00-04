@@ -8,12 +8,30 @@
  * @param s2Class second string
  * @param s3Class new file
  */
-Replace::Replace(std::string str, std::string s1Class, std::string s2Class, std::string s3Class)
+Replace::Replace(std::string file, std::string s1Class, std::string s2Class, std::string s3Class)
 {
-    fileContent = str;
-    s1 = s1Class;
-    s2 = s2Class;
-    s3 = s3Class;
+    this->s1 = s1Class;
+    this->s2 = s2Class;
+    this->newFile = s3Class;
+	this->fileName = file;
+}
+
+
+void Replace::GetFileContents()
+{
+	std::stringstream buffer;
+	std::ifstream infile;
+
+    infile.open(fileName, std::ios::in);
+	if (!infile)
+	{
+		std::cout << "The file cannot be open" << std::endl;
+		return;
+	}
+
+    buffer << infile.rdbuf();
+    this->fileContent = buffer.str();
+	infile.close();
 }
 
 /**
@@ -22,11 +40,11 @@ Replace::Replace(std::string str, std::string s1Class, std::string s2Class, std:
  * if the length is equal to s1, newString is equal to s2. else new string equals the character.
  * @return string -> returns the newString
  */
-string Replace::CheckString()
+std::string Replace::CheckString()
 {
     int j = 0;
     int z = i;
-    string newString;
+    std::string newString;
 
     while (s1[j] == fileContent[z])
     {
@@ -57,10 +75,17 @@ string Replace::CheckString()
 void Replace::ReplaceString()
 {
     i = 0;
-    string newString;
-    ofstream outfile;
+    std::string newString;
+    std::ofstream outfile;
 
-    outfile.open(s3, ios::out);
+	if (this->fileContent == "")
+	{
+		std::cout << "Nothing to replace" << std::endl; 
+		return;
+	}
+
+    outfile.open(newFile, std::ios::out);
+
     while (fileContent[i] != '\0')
     {
         if (fileContent[i] == s1[0])

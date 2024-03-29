@@ -1,7 +1,6 @@
 #ifndef HUMANB_H
 #define HUMANB_H
 
-#pragma once
 #include <string>
 #include <iostream>
 #include <cstring>
@@ -11,6 +10,7 @@ class HumanB
 {
     public:
         HumanB(std::string name);
+		HumanB();
         void setWeapon(Weapon &weapon);
         void attack();
         ~HumanB();
