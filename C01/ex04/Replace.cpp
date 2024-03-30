@@ -79,10 +79,13 @@ void Replace::ReplaceString()
     std::ofstream outfile;
 
 	if (this->fileContent == "")
-	{
-		std::cout << "Nothing to replace" << std::endl; 
 		return;
-	}
+    
+    if (this->s1 == "")
+    {
+        std::cout << "Nothing to replace" << std::endl; 
+		return;
+    }
 
     outfile.open(newFile, std::ios::out);
 

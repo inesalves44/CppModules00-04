@@ -14,7 +14,7 @@
 #include <iostream>
 #include <cstring>
 
-// https://www.geeksforgeeks.org/pointers-and-references-in-c/
+// https://www.geeksforgeeks.org/pointers-vs-references-cpp/
 int	main()
 {
 	std::string test = "HI THIS IS BRAIN";
