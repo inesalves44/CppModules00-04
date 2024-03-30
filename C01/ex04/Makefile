@@ -11,10 +11,10 @@
 # **************************************************************************** #
 
 
-OBJS  =  main.o Replace.o
+OBJS  =  main.o 
 NAME = string
-CC = c++
-CFLAGS = -Wextra -Werror -Wall -std=c++98
+CXX = c++
+CXXFLAGS = -Wextra -Werror -Wall -std=c++98
 GREEN           :=      \033[0;32m
 RED             :=      \033[1;31m
 WHITE           :=      \033[1;37m
@@ -24,7 +24,7 @@ CYAN            :=      \033[0;36m
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
+		@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS) 
 		@echo "$(GREEN) [Success] ex04 compilation.$(WHITE)"
 
 clean:
