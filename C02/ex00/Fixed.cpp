@@ -23,7 +23,6 @@ Fixed::Fixed( const Fixed & src )
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
-	//this->number = src.getRawBits();
 }
 
 
@@ -54,9 +53,8 @@ Fixed::~Fixed()
 Fixed &				Fixed::operator=( Fixed const & rhs )
 {
 	if ( this != &rhs )
-	{
 		this->number = rhs.getRawBits();
-	}
+	
 	return *this;
 }
 
@@ -84,11 +82,11 @@ void Fixed::setRawBits( int const raw )
 	this->number = raw;
 }
 
-// std::ostream &			operator<<( std::ostream & o, Fixed const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
+std::ostream &			operator<<( std::ostream & o, Fixed const & i )
+{
+	o << "Value = " << i.getRawBits();
+	return o;
+}
 
 
 /*

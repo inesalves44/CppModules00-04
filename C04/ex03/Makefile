@@ -14,7 +14,7 @@
 OBJS  =  main.o AMateria.o Ice.o Cure.o Character.o MateriaSource.o
 NAME = ex3
 CXX = c++
-CFLAGS = -Wextra -Werror -Wall -pedantic -std=c++98 
+CXXFLAGS = -Wextra -Werror -Wall -pedantic -std=c++98 
 GREEN           :=      \033[0;32m
 RED             :=      \033[1;31m
 WHITE           :=      \033[1;37m
@@ -24,7 +24,7 @@ CYAN            :=      \033[0;36m
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-		@$(CXX) $(CFLAGS) -o $(NAME) $(OBJS) 
+		@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS) 
 		@echo "$(GREEN) [Success] ex03 compilation.$(WHITE)"
 
 clean:

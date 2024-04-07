@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 
-OBJS  =  main.o 
+OBJS  =  main.o replace.o
 NAME = string
 CXX = c++
 CXXFLAGS = -Wextra -Werror -Wall -std=c++98

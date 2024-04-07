@@ -20,7 +20,12 @@ int	main()
 {
 	Zombie* zombieeees;
 
-	zombieeees = zombieHorde(5, "Anjos");
+	if (HORDE_NUMBER < 0)
+	{
+		std::cout << "Number of zombies has to be greater than 0" << std::endl;
+		return 1;
+	}
+	zombieeees = zombieHorde(HORDE_NUMBER, "Anjos");
 	
 	for (size_t i = 0; i < 5; i++)
 		zombieeees[i].Announce();

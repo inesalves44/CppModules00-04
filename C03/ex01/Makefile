@@ -24,7 +24,7 @@ CYAN            :=      \033[0;36m
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
+		@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS) 
 		@echo "$(GREEN) [Success] ex01 compilation.$(WHITE)"
 
 clean:

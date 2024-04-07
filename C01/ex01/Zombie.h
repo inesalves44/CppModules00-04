@@ -4,7 +4,11 @@
 #include <string>
 #include <iostream>
 #include <cstring>
-#pragma once
+
+#ifndef HORDE_NUMBER
+# define HORDE_NUMBER -5
+#endif
+
 
 class Zombie
 {

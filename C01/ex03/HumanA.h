@@ -1,7 +1,6 @@
 #ifndef HUMANA_H
 #define HUMANA_H
 
-#pragma once
 #include <string>
 #include <iostream>
 #include <cstring>
