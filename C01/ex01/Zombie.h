@@ -6,7 +6,7 @@
 #include <cstring>
 
 #ifndef HORDE_NUMBER
-# define HORDE_NUMBER -5
+# define HORDE_NUMBER 5
 #endif
 
 

@@ -27,7 +27,7 @@ int	main()
 	}
 	zombieeees = zombieHorde(HORDE_NUMBER, "Anjos");
 	
-	for (size_t i = 0; i < 5; i++)
+	for (size_t i = 0; i < HORDE_NUMBER; i++)
 		zombieeees[i].Announce();
 	
 	delete[] zombieeees;
