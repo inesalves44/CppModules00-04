@@ -34,6 +34,7 @@ Fixed::Fixed(const float number)
 {
 	std::cout << "float constructor called" << std::endl;
 	this->fixedPoint = roundf(number * (1 << this->fracBits));
+	
 }
 
 /**
@@ -43,7 +44,7 @@ Fixed::Fixed(const float number)
  */
 Fixed::Fixed(const int number)
 {
-	std::cout << " int constructor called" << std::endl;
+	std::cout << "int constructor called" << std::endl;
 	this->fixedPoint = number * (1 << this->fracBits);
 }
 
@@ -56,7 +57,8 @@ Fixed::Fixed(const int number)
  */
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called"<< std::endl;
+
+	std::cout << "Destructor called" << std::endl;
 }
 
 
@@ -74,13 +76,14 @@ Fixed &				Fixed::operator=( Fixed const & rhs )
 {
 	if ( this != &rhs )
 		this->fixedPoint = rhs.getRawBits();
+
 	std::cout << "Copy assignment operator called" << std::endl;
 	return *this;
 }
 
 /**
  * @brief overload of the insertion operator.
- * outputs the floating number to the putput stream
+ * outputs the floating number to the output stream
  * @param o -> output
  * @param i -> fixed object
  * @return std::ostream& 

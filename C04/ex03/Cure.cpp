@@ -10,7 +10,7 @@ Cure::Cure() : AMateria("cure")
 
 Cure::Cure( const Cure & src )
 {
-	this->type = src.type;
+	this->type = src.GetType();
 }
 
 

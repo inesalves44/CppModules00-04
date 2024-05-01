@@ -10,7 +10,7 @@ Ice::Ice() : AMateria("ice")
 
 Ice::Ice( const Ice & src )
 {
-	this->type = src.type;
+	this->type = src.GetType();
 }
 
 
@@ -31,7 +31,7 @@ Ice &				Ice::operator=( Ice const & rhs )
 {
 	if ( this != &rhs )
 	{
-		this->type = rhs.type;
+		this->type = rhs.GetType();
 	}
 	return *this;
 }
@@ -50,7 +50,6 @@ std::ostream &			operator<<( std::ostream & o, Ice const & i )
 AMateria* Ice::clone() const
 {
 	AMateria *test = new Ice();
-
 	return test;
 }
 

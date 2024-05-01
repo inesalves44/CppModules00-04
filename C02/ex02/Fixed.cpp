@@ -40,7 +40,7 @@ Fixed::Fixed(const float number)
  */
 Fixed::Fixed(const int number)
 {
-	this->fixedPoint = number << this->fracBits;
+	this->fixedPoint = number * (1 << this->fracBits);
 }
 
 /*
@@ -117,32 +117,32 @@ Fixed  Fixed::operator/(Fixed const &rhs ) const
  */
 bool Fixed::operator==(Fixed rhs) const
 {
-	return this->toFloat() == rhs.toFloat();
+	return (this->toFloat() == rhs.toFloat());
 }
 
 bool Fixed::operator!=(Fixed rhs) const
 {
-	return this->toFloat() != rhs.toFloat();
+	return (this->toFloat() != rhs.toFloat());
 }
 
 bool Fixed::operator>=(Fixed rhs) const
 {
-	return this->toFloat() >= rhs.toFloat();
+	return (this->toFloat() >= rhs.toFloat());
 }
 
 bool Fixed::operator<=(Fixed rhs) const
 {
-	return this->toFloat() <= rhs.toFloat();
+	return (this->toFloat() <= rhs.toFloat());
 }
 
 bool Fixed::operator>(Fixed rhs)  const
 {
-	return this->toFloat() > rhs.toFloat();
+	return (this->toFloat() > rhs.toFloat());
 }
 
 bool Fixed::operator<(Fixed rhs) const
 {
-	return this->toFloat() < rhs.toFloat();
+	return (this->toFloat() < rhs.toFloat());
 }
 #pragma endregion
 
@@ -252,34 +252,22 @@ float Fixed::toFloat( void ) const
  */
 Fixed &Fixed::min( Fixed &a, Fixed &b)
 {
-	if (a < b)
-		return a;
-	else
-		return b;
+	return(a < b ? a : b);
 }
 
 Fixed &Fixed::max( Fixed &a, Fixed &b)
 {
-	if (a < b)
-		return b;
-	else
-		return a;
+	return(a < b ? b : a);
 }
 
 const Fixed &Fixed::min( const Fixed  &a, const Fixed &b)
 {
-	if (a.fixedPoint < b.fixedPoint)
-		return a;
-	else
-		return b;
+	return(a.getRawBits() < b.getRawBits() ? a : b);
 }
 
 const Fixed &Fixed::max( const Fixed  &a, const Fixed &b)
 {
-	if (a.fixedPoint < b.fixedPoint)
-		return b;
-	else
-		return a;
+	return(a.getRawBits() < b.getRawBits() ? b : a);
 }
 
 #pragma endregion

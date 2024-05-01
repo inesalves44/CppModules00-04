@@ -8,7 +8,7 @@ int main(void)
     Animal* test[10];
 
     std::cout << "*******ARRAY: TEST*********" << std::endl; 
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 4; i++)
     {
         if (i % 2 == 0)
             test[i] = new Dog();
@@ -16,7 +16,7 @@ int main(void)
             test[i] = new Cat();
     }
     
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 4; i++)
     {
         if (i % 2 == 0)
         {
@@ -30,32 +30,38 @@ int main(void)
         }
     }
     
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 4; i++)
     {
         std::cout << *test[i];
         test[i]->presentIdeas();
     }
 
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 4; i++)
         delete test[i];
 
     std::cout << std::endl << "**********Copy Tests: Dog and Cat **************" << std::endl;
     const Dog* cao = new Dog();
-    const Cat* gato = new Cat();
     
     cao->giveIdeas("HIIIIII");
-    gato->giveIdeas("FOOD");
+    cao->presentIdeas();
 
     Dog* cao2 = new Dog(*cao);
-    Cat* gato2 = new Cat(*gato);
+    delete cao;
 
     cao2->presentIdeas();
-    gato2->presentIdeas();
 
-    delete cao;
     delete cao2;
-    delete gato;
-    delete gato2;
 
+
+    Cat* cat = new Cat();
+    Cat* catTest = new Cat();
+
+    cat->giveIdeas("foood");
+    *catTest = *cat;
+    delete cat;
+    catTest->presentIdeas();
+
+    delete catTest;
+    
     return 0;
 }

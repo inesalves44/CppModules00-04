@@ -16,7 +16,7 @@ Brain::Brain()
 Brain::Brain( const Brain & src )
 {
 	this->numIdeas = 0;
-	for (size_t i = 0; i < src.getIdeasNumber(); i++)
+	for (int i = 0; i < src.getIdeasNumber(); i++)
 	{
 		this->ideas[i] = src.getIdeaValue(i);
 		this->numIdeas++;
@@ -45,7 +45,7 @@ Brain &				Brain::operator=( Brain const & rhs )
 	if ( this != &rhs )
 	{
 		this->numIdeas = 0;
-		for (size_t i = 0; i < this->ideas->size(); i++)
+		for (int i = 0; i < rhs.getIdeasNumber(); i++)
 		{
 			this->ideas[i] = rhs.ideas[i];
 			this->numIdeas++;
@@ -97,7 +97,10 @@ std::string Brain::getIdeaValue(int i) const
 
 /**
  * @brief first checks if there are already 100 ideas
- * if not it adds the idea to the numideas space.
+ * if not it adds the idea to the numideas space.----------Brain Ideas -------------
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+[1]    209480 IOT instruction (core dumped)  ./animal
  * it also then adds one to the number of ideas
  * @param idea -> idea to give the animal
  */

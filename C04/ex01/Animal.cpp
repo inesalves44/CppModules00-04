@@ -99,7 +99,7 @@ void Animal::makeSound() const
  */
 void Animal::giveIdeas(std::string string) const
 {
-	
+	(void)string;
 }
 
 /**

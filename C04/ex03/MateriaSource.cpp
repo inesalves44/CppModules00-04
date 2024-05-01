@@ -6,14 +6,15 @@
 
 MateriaSource::MateriaSource()
 {
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < NEW_INVENTORY; i++)
 		this->materias[i] = NULL;	
 }
 
 MateriaSource::MateriaSource( const MateriaSource & src )
 {
+
 	for (size_t i = 0; i < NEW_INVENTORY; i++)
-		this->materias[i] = src.materias[i];
+		this->materias[i] = src.materias[i]->clone();
 }
 
 
@@ -23,11 +24,8 @@ MateriaSource::MateriaSource( const MateriaSource & src )
 
 MateriaSource::~MateriaSource()
 {
-	for (size_t i = 0; this->materias[i] != NULL; i++)
-	{
+	for (size_t i = 0; i < NEW_INVENTORY && this->materias[i] != NULL; i++)
 		delete this->materias[i];
-	}
-	
 }
 
 
@@ -37,10 +35,15 @@ MateriaSource::~MateriaSource()
 
 MateriaSource &				MateriaSource::operator=( MateriaSource const & rhs )
 {
+
 	if ( this != &rhs )
 	{
 		for(int i = 0;  i < NEW_INVENTORY; i++)
-			this->materias[i] = rhs.materias[i];
+		{
+			if (this->materias[i] != NULL)
+				delete this->materias[i];
+			this->materias[i] = rhs.materias[i]->clone();
+		}
 	}
 	return *this;
 }
@@ -55,12 +58,13 @@ void MateriaSource::learnMateria(AMateria* test)
 {
 	int i = 0;
 
-	while (this->materias[i] != NULL)
+	while (i < NEW_INVENTORY && this->materias[i] != NULL)
 		i++;
 	
-	if(i == 4)
+	if(i == NEW_INVENTORY)
 	{
 		std::cout << "No space to copy " << std::endl;
+		delete test;
 		return ;
 	}
 
@@ -72,13 +76,13 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 {
 	int i = 0;
 
-	while (this->materias[i] != NULL)
+	while (i < NEW_INVENTORY && this->materias[i] != NULL)
 	{
 		if (this->materias[i]->GetType() == type)
 			return this->materias[i]->clone();
 		i++;
 	}
-	
+	std::cout << "type of materia does not exist" << std::endl;
 	return 0;
 }
 

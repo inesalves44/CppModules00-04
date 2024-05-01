@@ -14,7 +14,7 @@
 OBJS  =  main.o Animal.o Dog.o Cat.o Brain.o
 NAME = animal
 CXX = c++
-CXXFLAGS = -Wextra -Werror -Wall -std=c++98
+CXXFLAGS = -Wextra -Werror -Wall -g -std=c++98
 GREEN           :=      \033[0;32m
 RED             :=      \033[1;31m
 WHITE           :=      \033[1;37m

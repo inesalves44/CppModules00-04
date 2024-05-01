@@ -37,6 +37,6 @@ class Character : public ICharacter
 		AMateria *floor[FLOOR];
 };
 
-//std::ostream &			operator<<( std::ostream & o, Character const & i );
 
-#endif /* ******************************************************* CHARACTER_H */
+#endif
+/* ******************************************************* CHARACTER_H */

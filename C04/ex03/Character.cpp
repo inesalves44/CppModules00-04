@@ -38,10 +38,10 @@ Character::Character( const Character & src )
 	this->name = src.name;
 
 	for(int i = 0; i < INVENTORY; i++)
-		this->inventory[i] = src.inventory[i];
+		this->inventory[i] = src.inventory[i]->clone();
 
 	for(int i = 0; i < FLOOR; i++)
-		this->floor[i] = src.floor[i];
+		this->floor[i] = src.floor[i]->clone();
 }
 
 
@@ -51,11 +51,11 @@ Character::Character( const Character & src )
 
 Character::~Character()
 {
-	/*for (size_t i = 0;  i < INVENTORY; i++)
+	for (size_t i = 0;  i < INVENTORY; i++)
 		delete this->inventory[i];
 	
 	for (size_t i = 0; i < FLOOR; i++)
-		delete this->floor[i];*/
+		delete this->floor[i];
 }
 
 
@@ -69,16 +69,14 @@ Character &				Character::operator=( Character const & rhs )
 	{
 		this->name = rhs.getName();
 		for (size_t i = 0; i < INVENTORY; i++)
-			this->inventory[i] = rhs.inventory[i];
+			this->inventory[i] = rhs.inventory[i]->clone();
 		
 		for (size_t i = 0; i < FLOOR; i++)
-			this->floor[i] = rhs.floor[i];
+			this->floor[i] = rhs.floor[i]->clone();
 		
 	}
 	return *this;
 }
-
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -91,18 +89,12 @@ std::string const & Character::getName() const
 void Character::equip(AMateria* m)
 {
 	int i = 0;
-	int j = 0;
 
 	while (this->inventory[i] != NULL)
 		i++;
 	
 	if (i == INVENTORY)
-	{
-		std::cout << "Character is full the Materia is on the floor" << std::endl;
-		while (this->floor[j] != NULL)
-			j++;
-		this->floor[j] = m;
-	}
+		std::cout << "Character is full the Materia cant insert!" << std::endl;
 	else
 	{
 		std::cout << "The new Materia is inserted in the slot " << i << std::endl;
@@ -124,23 +116,29 @@ void Character::use(int idx, ICharacter& target)
 		std::cout << "Empty slot" << std::endl;
 }
 
-void Character::unequip(int idx)
+void Character::unequip(int index)
 {
 	int j = 0;
 
-	if (idx < 0 || idx >= INVENTORY || this->inventory[idx] == NULL)
+	if (index < 0 || index >= INVENTORY || this->inventory[index] == NULL)
 	{
 		std::cout << "index invalid!" << std::endl;
 		return ;
 	}
 
-	while (this->floor[j] != NULL)
+	while (j < FLOOR && this->floor[j] != NULL)
 		j++;
 	
-	this->floor[j] = this->inventory[idx];
-	this->inventory[idx] = NULL;
+	if (j == FLOOR)
+	{
+		std::cout << "Floor is full cannot unequip"<< std::endl;
+		return;
+	}
 
-	std::cout << "The Materia on index " << idx <<  " is on the floor" << std::endl;
+	this->floor[j] = this->inventory[index];
+	this->inventory[index] = NULL;
+
+	std::cout << "The Materia on index " << index <<  " is on the floor" << std::endl;
 }
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

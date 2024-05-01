@@ -38,7 +38,8 @@ Dog &				Dog::operator=( Dog const & rhs )
 	if ( this != &rhs )
 	{
 		this->type = rhs.getType();
-		this->brain = rhs.brain;
+		delete this->brain;
+		this->brain = new Brain(*rhs.brain);
 	}
 	return *this;
 }

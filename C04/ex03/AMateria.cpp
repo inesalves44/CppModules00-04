@@ -6,11 +6,13 @@
 
 AMateria::AMateria()
 {
+	this->type = "empty";
+	std::cout << "default const"<< std::endl;
 }
 
 AMateria::AMateria( const AMateria & src )
 {
-	this->type = src.type;
+	this->type = src.GetType();
 }
 
 AMateria::AMateria(std::string const & type)
@@ -39,9 +41,7 @@ AMateria::~AMateria()
 AMateria &				AMateria::operator=( AMateria const & rhs )
 {
 	if ( this != &rhs )
-	{
 		this->type = rhs.GetType();
-	}
 	
 	return *this;
 }

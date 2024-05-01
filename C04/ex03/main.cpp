@@ -6,6 +6,24 @@
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
 
+void testingMateriaSource()
+{
+    IMateriaSource* src = new MateriaSource();
+    AMateria* temp;
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+
+    IMateriaSource* src2 = new MateriaSource();
+    src2->learnMateria(new Cure());
+    temp = src2->createMateria("test");
+   *dynamic_cast<MateriaSource*>(src2) = *dynamic_cast<MateriaSource*>(src);
+    
+    delete src;
+    delete src2;
+}
+
 /*int main(void)
 {
     IMateriaSource* src = new MateriaSource();
@@ -24,11 +42,21 @@
     delete bob;
     delete me;
     delete src;
+    return 0;src2 = src;
+}*/
 
-    return 0;
+int main()
+{
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    
+   
+    delete src;
+
 }
-*/
 
+/*
 int main()
 {
     std::cout << "****** First Test Materia Source *****" << std::endl;
@@ -85,4 +113,4 @@ int main()
     delete wand;
     delete src;
     
-}
+}*/

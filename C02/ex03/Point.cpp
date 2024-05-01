@@ -73,7 +73,7 @@ Point &				Point::operator=( Point const & rhs )
  */
 std::ostream &			operator<<( std::ostream & o, Point const & i )
 {
-	o << "Value X = " << i.presentX() << "Value Y =" << i.presentY();
+	o << "Value X = " << i.presentX() << "Value Y = " << i.presentY();
 	return o;
 }
 

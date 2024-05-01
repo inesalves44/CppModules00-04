@@ -84,7 +84,7 @@ void Fixed::setRawBits( int const raw )
 
 std::ostream &			operator<<( std::ostream & o, Fixed const & i )
 {
-	o << "Value = " << i.getRawBits();
+	o << "Print operator = " << i.getRawBits();
 	return o;
 }
 

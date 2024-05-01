@@ -39,4 +39,6 @@ class AMateria
 
 std::ostream &			operator<<( std::ostream & o, AMateria const & i );
 
-#endif /* ******************************************************** AMATERIA_H */
+#endif 
+/* ******************************************************** AMATERIA_H */
+

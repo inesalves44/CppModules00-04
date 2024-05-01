@@ -13,7 +13,7 @@ Brain::Brain()
 Brain::Brain( const Brain & src )
 {
 	this->numIdeas = 0;
-	for (size_t i = 0; i < src.getIdeasNumber(); i++)
+	for (int i = 0; i < src.getIdeasNumber(); i++)
 	{
 		this->ideas[i] = src.getIdeaValue(i);
 		this->numIdeas++;
@@ -42,7 +42,7 @@ Brain &				Brain::operator=( Brain const & rhs )
 	if ( this != &rhs )
 	{
 		this->numIdeas = 0;
-		for (size_t i = 0; i < this->ideas->size(); i++)
+		for (int i = 0; i < rhs.getIdeasNumber(); i++)
 		{
 			this->ideas[i] = rhs.ideas[i];
 			this->numIdeas++;

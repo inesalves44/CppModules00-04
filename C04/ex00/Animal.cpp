@@ -10,7 +10,7 @@
  */
 Animal::Animal()
 {
-	this->type = "No one";
+	this->type = "None";
 	std::cout << "Default animal constructor" << std::endl;
 }
 

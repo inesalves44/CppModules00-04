@@ -29,4 +29,5 @@ class MateriaSource : public IMateriaSource
 };
 
 
-#endif /* *************************************************** MATERIASOURCE_H */
+#endif 
+/* *************************************************** MATERIASOURCE_H */
