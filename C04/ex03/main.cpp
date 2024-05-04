@@ -6,6 +6,27 @@
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
 
+
+void testingMainSubject()
+{
+	IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+
+    ICharacter* me = new Character("me");
+    AMateria* tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+    ICharacter* bob = new Character("bob");
+    me->use(0, *bob);
+    me->use(1, *bob);
+    delete bob;
+    delete me;
+    delete src;
+}
+
 void testingMateriaSource()
 {
     IMateriaSource* src = new MateriaSource();
@@ -24,93 +45,79 @@ void testingMateriaSource()
     delete src2;
 }
 
-/*int main(void)
+void testingCharacters()
 {
-    IMateriaSource* src = new MateriaSource();
+	IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
+	ICharacter* character = new Character();
 
-    ICharacter* me = new Character("me");
-    AMateria* tmp;
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-    ICharacter* bob = new Character("bob");
-    me->use(0, *bob);
-    me->use(1, *bob);
-    delete bob;
-    delete me;
-    delete src;
-    return 0;src2 = src;
-}*/
+	character->equip(src->createMateria("ice"));
+	character->equip(src->createMateria("cure"));
+	character->equip(src->createMateria("ice"));
+	character->equip(src->createMateria("cure"));
+	//it will not work
+	character->equip(src->createMateria("cure"));
 
-int main()
-{
-    IMateriaSource* src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    
-   
-    delete src;
+	std::cout << "\033[0;36mCHARACTER1: \n" << *dynamic_cast<Character*>(character);
 
+	character->unequip(1);
+	character->unequip(0);
+	character->equip(src->createMateria("ice"));
+
+	std::cout << "\033[0;36mCHARACTER1: \n" << *dynamic_cast<Character*>(character);
+
+	ICharacter* character2 = new Character(*static_cast<Character*>(character));
+	std::cout << "\033[0;32mCHARACTER2: \n" << *dynamic_cast<Character*>(character2);
+
+	character->unequip(3);
+	character->unequip(3);
+	std::cout << "\033[0;36mCHARACTER1: \n" << *dynamic_cast<Character*>(character);
+	
+	
+	std::cout << "\033[0;36mCHARACTER1: \n" << *dynamic_cast<Character*>(character);
+	character2->equip(src->createMateria("cure"));
+	std::cout << "\033[0;32mCHARACTER2: \n" << *dynamic_cast<Character*>(character2);
+
+	ICharacter* character3 = new Character(*static_cast<Character*>(character2));
+	std::cout << "\033[1;31mCHARACTER3: \n" << *dynamic_cast<Character*>(character3);
+	*dynamic_cast<Character*>(character3) = *dynamic_cast<Character*>(character);
+	std::cout << "\033[0;36mCHARACTER1: \n" << *dynamic_cast<Character*>(character);
+	std::cout << "\033[1;31mCHARACTER3: \n" << *dynamic_cast<Character*>(character3);
+
+	delete src;
+	delete character;
+	delete character2;
+	delete character3;
 }
 
-/*
+
+void testingAMateria()
+{
+	IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+
+	AMateria *temp;
+
+	temp = src->createMateria("ice");
+	std::cout << temp->GetType() << std::endl;
+
+	AMateria *temp2 = new Ice(*static_cast<Ice*>(temp));
+	std::cout << temp2->GetType() << std::endl;
+
+	*dynamic_cast<AMateria*>(temp2) = *dynamic_cast<AMateria*>(src->createMateria("cure"));
+	std::cout << temp2->GetType() << std::endl;
+
+	delete temp;
+	delete temp2;
+}
+
 int main()
 {
-    std::cout << "****** First Test Materia Source *****" << std::endl;
-    IMateriaSource* src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    src->learnMateria(new Ice());
-    src->learnMateria(new Ice());
+	//testingMainSubject();
+	//testingMateriaSource();
+	testingCharacters();
+	//testingAMateria();
+}
 
-    src->learnMateria(new Cure());
-
-    std::cout << "********* End Test of Materia Source ****\n" << std::endl;
-    
-    std::cout << "****** Now testing Characters *****\n" << std::endl;
-    ICharacter* harry = new Character("Harry Potter");
-    ICharacter* voldy = new Character("Voldy");
-    
-    AMateria *wand;
-    wand = src->createMateria("ice");
-    std::cout << "Harry: ";
-    harry->equip(wand);
-    std::cout << "Harry: ";
-    harry->equip(wand);
-    wand = src->createMateria("cure");
-    std::cout << "Harry: ";
-    harry->equip(wand);
-    std::cout << "Harry: ";
-    harry->equip(wand);
-    std::cout << "Harry: ";
-    harry->equip(wand);
-    std::cout << "Harry: ";
-    harry->unequip(2);
-    std::cout << "Harry: ";
-    harry->equip(wand);
-
-    std::cout << "Voldy: ";
-    voldy->equip(wand);
-    wand = src->createMateria("ice");
-    std::cout << "Voldy: ";
-    voldy->equip(wand);
-    std::cout << "Voldy: ";
-    voldy->unequip(2);
-
-    std::cout << "Harry: ";
-    harry->use(1, *voldy);
-    std::cout << "Harry: ";
-    harry->use(3, *voldy);
-    std::cout << "Harry: ";
-    harry->use(4, *voldy);
-    std::cout << "********* End Test of Character ****" << std::endl;
-
-    delete harry;
-    delete voldy;
-    delete wand;
-    delete src;
-    
-}*/

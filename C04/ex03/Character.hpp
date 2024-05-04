@@ -6,6 +6,8 @@
 
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 
 #ifndef INVENTORY
 	#define INVENTORY 4
@@ -31,12 +33,15 @@ class Character : public ICharacter
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
 
+		std::string getValuesAMateria(bool isInventory, int index) const;
+		int getFloorInventory() const;
+
 	private:
 		std::string name;
 		AMateria *inventory[INVENTORY];
 		AMateria *floor[FLOOR];
 };
 
-
+std::ostream &			operator<<( std::ostream & o, Character const & i );
 #endif
 /* ******************************************************* CHARACTER_H */

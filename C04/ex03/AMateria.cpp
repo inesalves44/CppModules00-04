@@ -7,7 +7,6 @@
 AMateria::AMateria()
 {
 	this->type = "empty";
-	std::cout << "default const"<< std::endl;
 }
 
 AMateria::AMateria( const AMateria & src )
