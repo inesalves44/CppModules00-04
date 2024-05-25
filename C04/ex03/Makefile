@@ -14,7 +14,7 @@
 OBJS  =  main.o AMateria.o Ice.o Cure.o Character.o MateriaSource.o
 NAME = ex3
 CXX = c++
-CXXFLAGS = -Wextra -Werror -Wall -pedantic -g -std=c++98 
+CXXFLAGS = -Wextra -Werror -Wall -g -std=c++98 
 GREEN           :=      \033[0;32m
 RED             :=      \033[1;31m
 WHITE           :=      \033[1;37m

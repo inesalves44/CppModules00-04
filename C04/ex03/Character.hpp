@@ -35,11 +35,13 @@ class Character : public ICharacter
 
 		std::string getValuesAMateria(bool isInventory, int index) const;
 		int getFloorInventory() const;
+		bool isEmpty(int indx);
 
 	private:
 		std::string name;
 		AMateria *inventory[INVENTORY];
 		AMateria *floor[FLOOR];
+		int	floor_inventory;
 };
 
 std::ostream &			operator<<( std::ostream & o, Character const & i );

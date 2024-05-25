@@ -56,7 +56,6 @@ void testingCharacters()
 	character->equip(src->createMateria("cure"));
 	character->equip(src->createMateria("ice"));
 	character->equip(src->createMateria("cure"));
-	//it will not work
 	character->equip(src->createMateria("cure"));
 
 	std::cout << "\033[0;36mCHARACTER1: \n" << *dynamic_cast<Character*>(character);
@@ -81,7 +80,9 @@ void testingCharacters()
 
 	ICharacter* character3 = new Character(*static_cast<Character*>(character2));
 	std::cout << "\033[1;31mCHARACTER3: \n" << *dynamic_cast<Character*>(character3);
+
 	*dynamic_cast<Character*>(character3) = *dynamic_cast<Character*>(character);
+
 	std::cout << "\033[0;36mCHARACTER1: \n" << *dynamic_cast<Character*>(character);
 	std::cout << "\033[1;31mCHARACTER3: \n" << *dynamic_cast<Character*>(character3);
 
@@ -99,6 +100,7 @@ void testingAMateria()
     src->learnMateria(new Cure());
 
 	AMateria *temp;
+	AMateria *temp3 = src->createMateria("cure");
 
 	temp = src->createMateria("ice");
 	std::cout << temp->GetType() << std::endl;
@@ -106,18 +108,50 @@ void testingAMateria()
 	AMateria *temp2 = new Ice(*static_cast<Ice*>(temp));
 	std::cout << temp2->GetType() << std::endl;
 
-	*dynamic_cast<AMateria*>(temp2) = *dynamic_cast<AMateria*>(src->createMateria("cure"));
+	*dynamic_cast<AMateria*>(temp2) = *dynamic_cast<AMateria*>(temp3);
 	std::cout << temp2->GetType() << std::endl;
 
 	delete temp;
 	delete temp2;
+	delete temp3;
+	delete src;
+}
+
+void testinginloop()
+{
+	ICharacter* character = new Character();
+	IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+
+	for (size_t i = 0; i < 100; i++)
+	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			if (i % 2 == 0)
+			{
+				character->equip(src->createMateria("ice"));
+			}
+			else
+				character->equip(src->createMateria("cure"));
+		}
+		for (size_t i = 0; i < 4; i++)
+		{
+			character->unequip(i);
+		}
+	}
+
+	delete src;
+	delete character;
 }
 
 int main()
 {
-	//testingMainSubject();
+	testingMainSubject();
 	//testingMateriaSource();
-	testingCharacters();
+	//testingCharacters();
 	//testingAMateria();
+	//testinginloop();
 }
+
 

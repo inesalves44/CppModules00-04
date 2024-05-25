@@ -13,7 +13,7 @@ Character::Character()
 	
 	for (size_t i = 0; i < FLOOR; i++)
 		this->floor[i] = NULL;
-	
+	this->floor_inventory = 0;
 }
 
 /**
@@ -31,20 +31,30 @@ Character::Character(std::string const name)
 	
 	for (size_t i = 0; i < FLOOR; i++)
 		this->floor[i] = NULL;
+		
+	this->floor_inventory = 0;
 }
 
 Character::Character( const Character & src )
 {
 	this->name = src.name;
+	this->floor_inventory = src.getFloorInventory();
 
 	for(int i = 0; i < INVENTORY; i++)
 	{
 		if (src.inventory[i] != NULL)
 			this->inventory[i] = src.inventory[i]->clone();
+		else
+			this->inventory[i] = NULL;
 	}
 
-	for(int i = 0; i < FLOOR && src.floor[i] != NULL; i++)
-		this->floor[i] = src.floor[i]->clone();
+	for(int i = 0; i < FLOOR; i++)
+	{
+		if (src.floor[i] != NULL)
+			this->floor[i] = src.floor[i]->clone();
+		else
+			this->floor[i] = NULL;
+	}
 }
 
 
@@ -54,14 +64,17 @@ Character::Character( const Character & src )
 
 Character::~Character()
 {
-	for (size_t i = 0;  i < INVENTORY; i++)
+	for (size_t i = 0; i < INVENTORY; i++)
 	{
 		if (this->inventory[i] != NULL)
 			delete this->inventory[i];
 	}
 		
-	for (size_t i = 0; i < FLOOR && this->floor[i] != NULL; i++)
-		delete this->floor[i];
+	for (int i = 0; i < FLOOR; i++)
+	{
+		if (this->floor[i] != NULL)
+			delete this->floor[i];
+	}
 }
 
 
@@ -76,23 +89,25 @@ Character &				Character::operator=( Character const & rhs )
 		this->name = rhs.getName();
 		for (size_t i = 0; i < INVENTORY; i++)
 		{
-			delete this->inventory[i];
-            this->inventory[i] = nullptr;
+			if (this->inventory[i] != NULL)
+				delete this->inventory[i];
+            this->inventory[i] = NULL;
 		}
 		
 		for (size_t i = 0; i < FLOOR; i++)
 		{
-			delete this->floor[i];
-            this->floor[i] = nullptr;
+			if (this->floor[i] != NULL)
+				delete this->floor[i];
+            this->floor[i] = NULL;
 		}
 
 		for (size_t i = 0; i < INVENTORY; i++)
 		{
-			if (rhs.inventory[i] != nullptr)
+			if (rhs.inventory[i] != NULL)
 				this->inventory[i] = rhs.inventory[i]->clone();
 		}
-		for (size_t i = 0; i < FLOOR && rhs.floor[i] != NULL; i++)
-			this->floor[i] = rhs.floor[i]->clone();	
+		for (int i = 0; i < FLOOR && this->floor[i] != NULL ; i++)
+			this->floor[i] = rhs.floor[i]->clone();
 	}
 	return *this;
 }
@@ -109,17 +124,19 @@ void Character::equip(AMateria* m)
 {
 	int i = 0;
 
-	while (this->inventory[i] != NULL)
+	while (i < INVENTORY && this->inventory[i] != NULL)
 		i++;
-	
 	if (i == INVENTORY)
+	{
 		std::cout << "Character is full the Materia cant insert!" << std::endl;
+		delete m;
+	}
 	else
 	{
 		std::cout << "The new Materia " << m->GetType() <<  " is inserted in the slot " << i << std::endl;
 		this->inventory[i] = m->clone();
+		delete m;
 	}
-	delete m;
 }
 
 void Character::use(int idx, ICharacter& target)
@@ -129,11 +146,23 @@ void Character::use(int idx, ICharacter& target)
 		std::cout << "index invalid!" << std::endl;
 		return ;
 	}
+	
+	if (this->isEmpty(idx))
+		std::cout << "Empty slot" << std::endl;
+	else
+		this->inventory[idx]->use(target);
+}
+
+bool Character::isEmpty(int idx)
+{
+	if (idx < 0 || idx >= INVENTORY)
+		return true;
+
 
 	if (this->inventory[idx] != NULL)
-		this->inventory[idx]->use(target);
+		return false;
 	else
-		std::cout << "Empty slot" << std::endl;
+		return true;
 }
 
 void Character::unequip(int index)
@@ -141,7 +170,7 @@ void Character::unequip(int index)
 	int j = 0;
 
 
-	if (index < 0 || index >= INVENTORY || this->inventory[index] == nullptr)
+	if (index < 0 || index >= INVENTORY || this->inventory[index] == 0)
 	{
 		std::cout << "index invalid!" << std::endl;
 		return ;
@@ -155,25 +184,28 @@ void Character::unequip(int index)
 		std::cout << "Floor is full cannot unequip"<< std::endl;
 		return ;
 	}
-
+	this->floor_inventory++;
 	this->floor[j] = this->inventory[index]->clone();
 	delete this->inventory[index];
-	this->inventory[index] = nullptr;
+	this->inventory[index] = NULL;
 	std::cout << "The Materia on index " << index <<  " is on the floor" << std::endl;
 }
 
 std::string Character::getValuesAMateria(bool isInventory, int index) const
 {
+	if (index >= 0 && index < INVENTORY)
+		return "";
+
 	if (isInventory)
 	{
-		if (this->inventory[index] != NULL)
+		if (this->inventory[index] != 0)
 			return this->inventory[index]->GetType();
 		else
 			return "";
 	}
 	else
 	{
-		if (this->floor[index] != NULL)
+		if (this->floor[index] != 0)
 			return this->floor[index]->GetType();
 		else
 			return "";
@@ -182,12 +214,7 @@ std::string Character::getValuesAMateria(bool isInventory, int index) const
 
 int Character::getFloorInventory() const
 {
-	int i; 
-	for (i = 0; this->floor[i] != nullptr; i++)
-	{
-	}
-	return(i);
-	
+	return(this->floor_inventory);
 }
 
 std::ostream &			operator<<( std::ostream & o, Character const & i )
