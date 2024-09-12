@@ -14,9 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-      working-directory: ./C00/ex00/
     - name: make
       run: make
       working-directory: ./C00/ex00/
