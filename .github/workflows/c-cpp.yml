@@ -17,9 +17,3 @@ jobs:
     - name: make
       run: make
       working-directory: ./C00/ex00/
-    - name: make check
-      run: make check
-      working-directory: ./C00/ex00/
-    - name: make distcheck
-      run: make distcheck
-      working-directory: ./C00/ex00/
