@@ -1,0 +1,5 @@
+Title: Bug in login feature
+Description: The login button doesn’t work when using Safari on macOS.
+
+Title: Refactor API calls
+Description: Refactor the API calls to use async/await instead of callbacks.
