@@ -31,27 +31,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # Step 2: Create the project if it doesn't exist
-    - name: Create project (if not exists)
-      if: env.project_exists == 'false'
-      id: create-project
-      run: |
-        PROJECT_NAME="My GitHub Project"
-        PROJECT_ID=$(curl -s -X POST \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -H "Accept: application/vnd.github.inertia-preview+json" \
-          https://api.github.com/repos/${{ github.repository }}/projects \
-          -d "{\"name\":\"$PROJECT_NAME\"}" | jq -r '.id')
-
-        if [ -z "$PROJECT_ID" ] || [ "$PROJECT_ID" == "null" ]; then
-          echo "Failed to create project" >&2
-          exit 1
-        else
-          echo "Created project with ID: $PROJECT_ID"
-          echo "project_id=$PROJECT_ID" >> $GITHUB_ENV
-        fi
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # Step 3: Read issues from file and create them
     - name: Read issue file and create issues
