@@ -18,6 +18,6 @@ jobs:
       working-directory: ./C00/ex00/
      # Add a step to run the executable before cleaning
     - name: Run the executable
-      run: ./megaphone
+      run: ./megaphone "oi migos como estamos?"
       working-directory: ./C00/ex00/
 
