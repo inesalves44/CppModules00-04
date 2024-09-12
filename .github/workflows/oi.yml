@@ -1,0 +1,23 @@
+name: Testeee
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: make
+      run: make
+      working-directory: ./C00/ex00/
+     # Add a step to run the executable before cleaning
+    - name: Run the executable
+      run: ./megaphone
+      working-directory: ./C00/ex00/
+
