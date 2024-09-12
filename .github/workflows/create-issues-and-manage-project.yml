@@ -32,24 +32,28 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-    # Step 3: Read issues from file and create them
+   # Step 3: Read issues from file and handle newlines
     - name: Read issue file and create issues
       id: issue-file
       run: |
-        ISSUE_TITLES=$(grep -oP '^Title: \K.*' issues.txt)
-        ISSUE_DESCRIPTIONS=$(grep -oP '^Description: \K.*' issues.txt)
+        # Read issue titles and descriptions, replacing newlines with a separator (|)
+        ISSUE_TITLES=$(grep -oP '^Title: \K.*' issues.txt | tr '\n' '|')
+        ISSUE_DESCRIPTIONS=$(grep -oP '^Description: \K.*' issues.txt | tr '\n' '|')
+
+        # Save titles and descriptions to environment variables
         echo "titles=$ISSUE_TITLES" >> $GITHUB_ENV
         echo "descriptions=$ISSUE_DESCRIPTIONS" >> $GITHUB_ENV
 
-    # Step 4: Create issues and add to the project
+    # Step 4: Create issues and add to project
     - name: Create issues and add to project
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TITLES: ${{ env.titles }}
         DESCRIPTIONS: ${{ env.descriptions }}
       run: |
-        IFS=$'\n' read -rd '' -a TITLES <<< "$TITLES"
-        IFS=$'\n' read -rd '' -a DESCRIPTIONS <<< "$DESCRIPTIONS"
+        # Split the titles and descriptions by the separator (|)
+        IFS='|' read -r -a TITLES <<< "$TITLES"
+        IFS='|' read -r -a DESCRIPTIONS <<< "$DESCRIPTIONS"
 
         PROJECT_ID=${{ env.project_id }}
         
@@ -77,4 +81,3 @@ jobs:
             echo "Issue '$TITLE' added to project"
           fi
         done
-
