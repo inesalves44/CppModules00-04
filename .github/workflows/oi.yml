@@ -15,7 +15,6 @@ jobs:
       working-directory: ./C00/ex00/
      # Add a step to run the executable before cleaning
     - name: Run the executable
-      run: ./megaphone "oi migos como estamos?" >> test.txt
-           echo test.txt
+      run: ./megaphone "oi migos como estamos?" >> test.txt; cat test.txt
       working-directory: ./C00/ex00/
 
