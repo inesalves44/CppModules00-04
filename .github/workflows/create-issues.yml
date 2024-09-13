@@ -1,4 +1,4 @@
-name: Create Issues and Manage Project
+name: Create Issues 
 
 on:
   workflow_dispatch:  # Manual trigger for the button
