@@ -1,0 +1,15 @@
+name: Create Project Card
+
+on:
+    issues:
+      types: [opened]
+
+jobs:
+    createCard:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Create or Update Project Card
+          uses: peter-evans/create-or-update-project-card@v3
+          with:
+            project-name: My GitHub Project
+            column-name: Backlog
