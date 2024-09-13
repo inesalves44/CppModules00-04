@@ -15,4 +15,4 @@ jobs:
           with:
             project-name: TEST
             column-name: Backlog
-            organization: your-org-or-username
+            organization: inesalves44
