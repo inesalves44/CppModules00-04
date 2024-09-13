@@ -2,7 +2,7 @@ name: Create Project Card
 
 on:
   workflow_run:
-    workflows: ["create-issues-and-manage-project"]  # The name of the workflow that creates the issue
+    workflows: ["Create Issues"]  # The name of the workflow that creates the issue
     types:
       - completed
 
