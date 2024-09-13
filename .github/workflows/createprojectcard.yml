@@ -1,8 +1,10 @@
 name: Create Project Card
 
 on:
-    issues:
-      types: [opened]
+  workflow_run:
+    workflows: ["issue-creator"]  # The name of the workflow that creates the issue
+    types:
+      - completed
 
 jobs:
     createCard:
