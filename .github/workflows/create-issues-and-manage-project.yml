@@ -3,81 +3,14 @@ name: Create Issues and Manage Project
 on:
   workflow_dispatch:  # Manual trigger for the button
 
+permissions:
+  contents: read
+  issues: write 
 jobs:
-  create-issues-and-project:
+  stuff:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    # Step 1: Check if the project exists
-    - name: Check if project exists
-      id: check-project
-      run: |
-        PROJECT_NAME="My GitHub Project"
-        PROJECT_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/projects | \
-          jq -r --arg PROJECT_NAME "$PROJECT_NAME" '.[] | select(.name == $PROJECT_NAME) | .id')
-          
-        if [ -z "$PROJECT_ID" ]; then
-          echo "Project does not exist."
-          echo "project_exists=false" >> $GITHUB_ENV
-        else
-          echo "Project exists with ID: $PROJECT_ID"
-          echo "project_exists=true" >> $GITHUB_ENV
-          echo "project_id=$PROJECT_ID" >> $GITHUB_ENV
-        fi
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-   # Step 3: Read issues from file and handle newlines
-    - name: Read issue file and create issues
-      id: issue-file
-      run: |
-        # Read issue titles and descriptions, replacing newlines with a separator (|)
-        ISSUE_TITLES=$(grep -oP '^Title: \K.*' issues.txt | tr '\n' '|')
-        ISSUE_DESCRIPTIONS=$(grep -oP '^Description: \K.*' issues.txt | tr '\n' '|')
-
-        # Save titles and descriptions to environment variables
-        echo "titles=$ISSUE_TITLES" >> $GITHUB_ENV
-        echo "descriptions=$ISSUE_DESCRIPTIONS" >> $GITHUB_ENV
-
-    # Step 4: Create issues and add to project
-    - name: Create issues and add to project
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TITLES: ${{ env.titles }}
-        DESCRIPTIONS: ${{ env.descriptions }}
-      run: |
-        # Split the titles and descriptions by the separator (|)
-        IFS='|' read -r -a TITLES <<< "$TITLES"
-        IFS='|' read -r -a DESCRIPTIONS <<< "$DESCRIPTIONS"
-
-        PROJECT_ID=${{ env.project_id }}
-        
-        for i in "${!TITLES[@]}"; do
-          TITLE="${TITLES[$i]}"
-          DESCRIPTION="${DESCRIPTIONS[$i]}"
-          
-          # Create issue
-          ISSUE_RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
-            -d "{\"title\":\"$TITLE\", \"body\":\"$DESCRIPTION\"}" \
-            https://api.github.com/repos/${{ github.repository }}/issues)
-
-          ISSUE_ID=$(echo "$ISSUE_RESPONSE" | jq -r '.id')
-
-          if [ -z "$ISSUE_ID" ] || [ "$ISSUE_ID" == "null" ]; then
-            echo "Failed to create issue: $TITLE" >&2
-            exit 1
-          else
-            # Add issue to project
-            curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
-              -H "Accept: application/vnd.github.inertia-preview+json" \
-              -d "{\"content_id\": $ISSUE_ID, \"content_type\": \"Issue\"}" \
-              https://api.github.com/projects/$PROJECT_ID/columns/1/cards
-
-            echo "Issue '$TITLE' added to project"
-          fi
-        done
+      - uses: actions/checkout@v3
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
