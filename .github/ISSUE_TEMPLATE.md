@@ -1,5 +1,5 @@
 ---
-title: Last test for ine
+title: Last test for ines
 assignees: inesalves44
 labels: bug
 ---
